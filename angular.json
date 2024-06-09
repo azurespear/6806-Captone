@@ -3,9 +3,19 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "my-angular-app": {
+    "pet-adoption": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/my-angular-app",
+            "outputPath": "dist/pet-adoption",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -27,9 +37,15 @@
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "server": "src/main.server.ts",
+            "prerender": true,
+            "ssr": {
+              "entry": "server.ts"
+            }
           },
           "configurations": {
             "production": {
@@ -59,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "my-angular-app:build:production"
+              "buildTarget": "pet-adoption:build:production"
             },
             "development": {
-              "buildTarget": "my-angular-app:build:development"
+              "buildTarget": "pet-adoption:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -85,6 +101,7 @@
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -94,6 +111,6 @@
     }
   },
   "cli": {
-    "analytics": "af97e7cc-7e32-42cf-81a8-4f6c9f32eda0"
+    "analytics": "e254b04e-60d7-4612-8cf1-16e1ffd789cd"
   }
 }
