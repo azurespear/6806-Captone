@@ -9,12 +9,16 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
-import {MatRadioModule} from "@angular/material/radio";
+import { MatRadioModule} from "@angular/material/radio";
+import { LandingComponent } from './landing/landing.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ForumComponent
+    ForumComponent,
+    LandingComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
