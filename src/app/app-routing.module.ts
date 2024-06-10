@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {ForumComponent} from "./forum/forum.component";
+import { ForumComponent} from "./forum/forum.component";
+import { LandingComponent } from './landing/landing.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -8,8 +10,13 @@ const routes: Routes = [
     component: ForumComponent
   },
   {
+    path: 'landing',
+    component: LandingComponent,
+    pathMatch: 'full'
+  },
+  {
     path: '',
-    redirectTo: 'forum',
+    component: LoginComponent,
     pathMatch: 'full'
   }
 ];
