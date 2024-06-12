@@ -1,5 +1,12 @@
-<nav>
-    <ul>
-      <li><a routerLink="/forum">Forum</a></li>
-    </ul>
-  </nav>
+<header fxLayout="column" fxLayoutAlign="center center" class="header">
+  <h1>Petropolis</h1>
+</header>
+  
+<div fxLayout="column" fxLayout.xs="row" fxLayoutAlign="space-evenly center" style="height: 100vh;">
+
+    <button mat-flat-button color="primary" (click)="onProfileButtonClick()">User Profile</button>
+    <button mat-flat-button color="primary" (click)="onLogoutButtonClick()">Log out</button>
+    <button mat-flat-button color="primary" (click)="onMapButtonClick()">Map</button>
+    <button mat-flat-button color="primary" (click)="onForumButtonClick()">Forum</button>
+    <button mat-flat-button color="primary" (click)="onAIButtonClick()">AI Helper</button>
+</div>
