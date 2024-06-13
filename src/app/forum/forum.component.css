@@ -1,37 +1,83 @@
 .header {
     display: flex;
     justify-content: space-between;
-  }
-  
-  .navigation {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    padding: 0 100px;
-  }
-  
-  .navigation button {
-    flex: 1;
-  }
-  
-  .content {
-    display: flex;
-    margin-top: 50px;
-    gap: 20px;
-  }
-  
-  .left {
-    background-color: #e1e1e1;
-    width: 300px;
-    padding: 20px;
-  }
-  
-  .radio-label {
-    display: block;
-  }
-  
-  .radio-wrapper {
-    display: flex;
-    flex-direction: column;
-  }
-  
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  padding: 0 100px;
+}
+
+.navigation button {
+  flex: 1;
+}
+
+.content {
+  display: flex;
+  margin-top: 50px;
+  gap: 20px;
+}
+
+.navigation button {
+  flex: 1;
+}
+
+.content {
+  display: flex;
+  margin-top: 50px;
+  gap: 20px;
+}
+
+.left {
+  background-color: #e1e1e1;
+  width: 300px;
+  padding: 20px;
+}
+
+.radio-label {
+  display: block;
+}
+
+.radio-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.right .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e1e1e1;
+  border-radius: 10px;
+  padding: 10px;
+  margin-right: 20px;
+  margin-bottom: 15px;
+}
+
+.desc {
+  display: flex;
+  flex-direction: column;
+}
+
+.desc .name {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.desc .location {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.item-left {
+  display: flex;
+  gap: 20px;
+}
