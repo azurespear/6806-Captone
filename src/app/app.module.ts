@@ -16,13 +16,15 @@ import { MatInputModule } from "@angular/material/input";
 import { MatRadioModule} from "@angular/material/radio";
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { RegComponent } from './reg/reg.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ForumComponent,
     LandingComponent,
-    LoginComponent
+    LoginComponent,
+    RegComponent
   ],
   imports: [
     BrowserModule,

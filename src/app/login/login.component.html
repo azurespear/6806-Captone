@@ -2,7 +2,7 @@
   <h1>Petropolis</h1>
 </header>
   
-<div fxLayout="column" fxLayout.xs="row" fxLayoutAlign="center center" style="height: 75vh;">
+<div fxLayout="column" fxLayout.xs="row" fxLayoutGap="10px" fxLayoutAlign="center center" style="height: 75vh;">
     <mat-form-field appearance="fill" style="width: 300px;">
       <mat-label>Username</mat-label>
         <input matInput [(ngModel)]="username" name="username">
@@ -12,4 +12,5 @@
         <input matInput [(ngModel)]="password" name="password">
     </mat-form-field>
     <button mat-flat-button color="primary" (click)="onLoginButtonClick()">Login</button>
+    <button mat-flat-button color="primary" (click)="onSignUpButtonClick()">Sign up</button>
 </div>

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ForumComponent} from "./forum/forum.component";
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
+import { RegComponent } from './reg/reg.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,11 @@ const routes: Routes = [
   {
     path: 'landing',
     component: LandingComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'reg',
+    component: RegComponent,
     pathMatch: 'full'
   },
   {
