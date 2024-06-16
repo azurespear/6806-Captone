@@ -3,6 +3,8 @@ import { AppComponent } from './app.component';
 import { ForumComponent } from './forum/forum.component';
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
+import { RegComponent } from './reg/reg.component';
+import { ProfileComponent } from './profile/profile.component';
 
 // Module
 import { NgModule } from '@angular/core';
@@ -16,8 +18,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatRadioModule} from "@angular/material/radio";
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { RegComponent } from './reg/reg.component';
-import { ProfileComponent } from './profile/profile.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ProfileComponent } from './profile/profile.component';
     MatInputModule,
     MatRadioModule,
     FormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatCardModule
   ],
   providers: [
     provideClientHydration(),
