@@ -1,11 +1,12 @@
-<header fxLayout="column" fxLayoutAlign="center center" class="header">
-  <h1>Petropolis</h1>
-</header>
-  
-<div fxLayout="column" fxLayout.xs="row" fxLayoutAlign="space-evenly center" style="height: 100vh;">
-
+<div class="header">
+  <h2>Petropolis</h2>
+  <div fxLayout="row" fxLayout.xs="row" fxLayoutGap="10px" fxLayoutAlign="space-evenly center">
     <button mat-flat-button color="primary" (click)="onProfileButtonClick()">User Profile</button>
     <button mat-flat-button color="primary" (click)="onLogoutButtonClick()">Log out</button>
+  </div>
+</div>
+  
+<div fxLayout="row" fxLayout.xs="row" fxLayoutAlign="space-evenly center" style="height: 50vh;">
     <button mat-flat-button color="primary" (click)="onMapButtonClick()">Map</button>
     <button mat-flat-button color="primary" (click)="onForumButtonClick()">Forum</button>
     <button mat-flat-button color="primary" (click)="onAIButtonClick()">AI Helper</button>

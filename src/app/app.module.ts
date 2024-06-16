@@ -17,6 +17,7 @@ import { MatRadioModule} from "@angular/material/radio";
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RegComponent } from './reg/reg.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { RegComponent } from './reg/reg.component';
     ForumComponent,
     LandingComponent,
     LoginComponent,
-    RegComponent
+    RegComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

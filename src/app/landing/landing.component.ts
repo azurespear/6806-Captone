@@ -11,7 +11,7 @@ export class LandingComponent {
   constructor(private router: Router) { };
 
   onProfileButtonClick() {
-    //this.router.navigate(['/forum']);
+    this.router.navigate(['/profile']);
   }
 
   onLogoutButtonClick() {

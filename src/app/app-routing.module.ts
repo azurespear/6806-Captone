@@ -4,11 +4,13 @@ import { ForumComponent} from "./forum/forum.component";
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { RegComponent } from './reg/reg.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
-    path: 'forum',
-    component: ForumComponent
+    path: '',
+    component: LoginComponent,
+    pathMatch: 'full'
   },
   {
     path: 'landing',
@@ -21,9 +23,13 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: '',
-    component: LoginComponent,
+    path: 'profile',
+    component: ProfileComponent,
     pathMatch: 'full'
+  },
+  {
+    path: 'forum',
+    component: ForumComponent
   }
 ];
 
