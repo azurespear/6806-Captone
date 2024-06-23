@@ -40,3 +40,17 @@
   margin-right: 20px;
   font-weight: 500;
 }
+
+.comment {
+  background-color: #f5f5f5;
+  border: 1px solid #eaeaea;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.author {
+  color: #3b7df7;
+  font-weight: 500;
+  font-size: 18px;
+}
