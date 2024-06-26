@@ -13,6 +13,9 @@ export class RegComponent {
   password: string = '';
 
   onSignUpButtonClick() {
+    console.log(this.email);
+    console.log(this.username);
+    console.log(this.password);
     this.router.navigate(['/reg']);
   }
 

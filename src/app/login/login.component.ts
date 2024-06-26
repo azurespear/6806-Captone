@@ -13,6 +13,8 @@ export class LoginComponent {
   password: string = '';
 
   onLoginButtonClick() {
+    console.log(this.username);
+    console.log(this.password);
     this.router.navigate(['/landing']);
   }
 

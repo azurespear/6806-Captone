@@ -7,13 +7,18 @@ import { Component } from '@angular/core';
 })
 export class ProfileComponent {
   showContent: string = 'profile';
-  
-  switchContent(content: string) {
-    this.showContent = content;
-  }
-
   email: string = '';
   username: string = '';
   password: string = '';
+  
+  confirmEdit(content: string) {
+    console.log(this.email);
+    console.log(this.username);
+    console.log(this.password);
+    this.showContent = content;
+  }
 
+  goToEdit(content: string) {
+    this.showContent = content;
+  }
 }
