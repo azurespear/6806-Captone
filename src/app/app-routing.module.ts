@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ForumComponent} from "./forum/forum.component";
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
+import { ViewComponent } from './view/view.component';
 import { RegComponent } from './reg/reg.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MapComponent } from './map/map.component';
@@ -18,6 +19,10 @@ const routes: Routes = [
     path: 'landing',
     component: LandingComponent,
     pathMatch: 'full'
+  },
+  {
+    path: 'view',
+    component: ViewComponent
   },
   {
     path: 'reg',
