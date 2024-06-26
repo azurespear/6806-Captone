@@ -19,7 +19,7 @@ export class LandingComponent {
   }
 
   onMapButtonClick() {
-    //this.router.navigate(['/map']);
+    this.router.navigate(['/map']);
   }
 
   onForumButtonClick() {
@@ -27,6 +27,6 @@ export class LandingComponent {
   }
 
   onAIButtonClick() {
-    //this.router.navigate(['/ai']);
+    this.router.navigate(['/ai']);
   }
 }

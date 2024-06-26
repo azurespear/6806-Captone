@@ -5,6 +5,8 @@ import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { RegComponent } from './reg/reg.component';
 import { ProfileComponent } from './profile/profile.component';
+import { MapComponent } from './map/map.component';
+import { AiComponent } from './ai/ai.component';
 
 // Module
 import { NgModule } from '@angular/core';
@@ -20,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +30,9 @@ import { MatCardModule } from '@angular/material/card';
     LandingComponent,
     LoginComponent,
     RegComponent,
-    ProfileComponent
+    ProfileComponent,
+    MapComponent,
+    AiComponent
   ],
   imports: [
     BrowserModule,

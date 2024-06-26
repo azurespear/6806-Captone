@@ -5,6 +5,8 @@ import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { RegComponent } from './reg/reg.component';
 import { ProfileComponent } from './profile/profile.component';
+import { MapComponent } from './map/map.component';
+import { AiComponent } from './ai/ai.component';
 
 const routes: Routes = [
   {
@@ -28,8 +30,17 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'map',
+    component: MapComponent,
+    pathMatch: 'full'
+  },
+  {
     path: 'forum',
     component: ForumComponent
+  },
+  {
+    path: 'ai',
+    component: AiComponent
   }
 ];
 
