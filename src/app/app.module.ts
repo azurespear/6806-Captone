@@ -7,6 +7,7 @@ import { RegComponent } from './reg/reg.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MapComponent } from './map/map.component';
 import { AiComponent } from './ai/ai.component';
+import { ViewComponent } from './view/view.component';
 
 // Module
 import { NgModule } from '@angular/core';
@@ -20,7 +21,6 @@ import { MatInputModule } from "@angular/material/input";
 import { MatRadioModule} from "@angular/material/radio";
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ViewComponent } from './view/view.component';
 import { MatCardModule } from '@angular/material/card';
 
 
