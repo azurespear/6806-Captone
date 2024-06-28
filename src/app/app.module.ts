@@ -23,6 +23,8 @@ import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -35,7 +37,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     RegComponent,
     ProfileComponent,
     MapComponent,
-    AiComponent
+    AiComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     FormsModule,
     FlexLayoutModule,
     MatCardModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration(),

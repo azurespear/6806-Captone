@@ -1,7 +1,19 @@
 <div class="header">
     <h2>Petropolis</h2>
     <button mat-flat-button color="primary" routerLink="/landing">Back</button>
-  </div>
+</div>
 
-<google-map height="500px" width="100%" [center]="center" [zoom]="zoom">
-</google-map>
+  <div class="navigation" fxLayout="row" fxLayout.xs="row" fxLayoutAlign="space-evenly center">
+    <button mat-flat-button color="primary" (click)="onStoreButtonClick()">Store</button>
+    <button mat-flat-button color="primary" (click)="onHospitalButtonClick()">Hospital</button>
+    <button mat-flat-button color="primary" (click)="onParkButtonClick()">Park</button>
+  </div>
+ 
+  <div fxLayout="row" fxLayout.xs="column" fxFill>
+    <div fxFlex="25" fxFlex.xs="100" class="sidebar-container">
+      <app-sidebar [location]="selectedLocation"></app-sidebar>
+    </div>
+    <div fxFlex="75" fxFlex.xs="100" class="map-container">
+      <div id="map" class="map"></div>
+    </div>
+  </div>

@@ -1,0 +1,11 @@
+<div class="sidebar">
+  <h2 *ngIf="location">{{ location.name }}</h2>
+  <p *ngIf="location">
+    {{ location.address }}<br>
+    Latitude: {{ location.position.lat }}<br>
+    Longitude: {{ location.position.lng }}
+  </p>
+  <div *ngIf="!location">
+    <p>Click on a place marker to see details</p>
+  </div>
+</div>
