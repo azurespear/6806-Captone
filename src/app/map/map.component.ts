@@ -52,34 +52,11 @@ export class MapComponent implements OnInit {
     this.map = new google.maps.Map(document.getElementById('map') as HTMLElement, mapOptions);
     this.service = new google.maps.places.PlacesService(this.map);
 
-    this.map.addListener('click', (event: google.maps.MapMouseEvent) => {
-      if (event.latLng) {
-        const lat = event.latLng.lat();
-        const lng = event.latLng.lng();
-        console.log(lat);
-        console.log(lng);
-        //this.findPlaceByLatLng(lat, lng);
-      }
-    });
-  }
-
-  findPlaceByLatLng(lat: number, lng: number) {
-    const location = new google.maps.LatLng(lat, lng);
-    const request: google.maps.places.PlaceSearchRequest = {
-      location: location,
-      radius: 1, // Small radius to ensure we get the nearest place
-    };
-
-    this.service.nearbySearch(request, (results, status) => {
-      if (status === google.maps.places.PlacesServiceStatus.OK && results && results.length > 0) {
-        const placeId = results[0].place_id;
-        if (placeId) {
-          this.getPlaceDetails(placeId);
-        } else {
-          this.setUnknownLocation(lat, lng);
-        }
-      } else {
-        this.setUnknownLocation(lat, lng);
+    // Add listener for POI clicks
+    this.map.addListener('click', (event: any) => {
+      if (event.placeId) {
+        event.stop();
+        this.getPlaceDetails(event.placeId);
       }
     });
   }
