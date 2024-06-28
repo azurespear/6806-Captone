@@ -22,6 +22,7 @@ import { MatRadioModule} from "@angular/material/radio";
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { MatCardModule } from '@angular/material/card';
     MatRadioModule,
     FormsModule,
     FlexLayoutModule,
-    MatCardModule
+    MatCardModule,
+    GoogleMapsModule
   ],
   providers: [
     provideClientHydration(),

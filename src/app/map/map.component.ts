@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrl: './map.component.css'
 })
 export class MapComponent {
-
+  center = { lat: 49.249212, lng: -123.127549 };
+  zoom = 12;
 }
