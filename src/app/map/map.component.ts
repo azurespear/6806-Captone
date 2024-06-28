@@ -34,7 +34,7 @@ export class MapComponent implements OnInit {
       };
 
       const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places&callback=initMap`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDBK7wgcn-uvE3bE3VnqLtuQndwRirKTto&libraries=places&callback=initMap`;
       script.async = true;
       script.defer = true;
       document.head.appendChild(script);
@@ -56,23 +56,25 @@ export class MapComponent implements OnInit {
       if (event.latLng) {
         const lat = event.latLng.lat();
         const lng = event.latLng.lng();
-        this.getNearbyPlaces(lat, lng);
+        console.log(lat);
+        console.log(lng);
+        //this.findPlaceByLatLng(lat, lng);
       }
     });
   }
 
-  getNearbyPlaces(lat: number, lng: number) {
+  findPlaceByLatLng(lat: number, lng: number) {
     const location = new google.maps.LatLng(lat, lng);
     const request: google.maps.places.PlaceSearchRequest = {
       location: location,
-      radius: 50
+      radius: 1, // Small radius to ensure we get the nearest place
     };
 
     this.service.nearbySearch(request, (results, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK && results && results.length > 0) {
         const placeId = results[0].place_id;
         if (placeId) {
-          this.getPlaceDetails(placeId, lat, lng);
+          this.getPlaceDetails(placeId);
         } else {
           this.setUnknownLocation(lat, lng);
         }
@@ -82,31 +84,31 @@ export class MapComponent implements OnInit {
     });
   }
 
-  getPlaceDetails(placeId: string, lat: number, lng: number) {
+  getPlaceDetails(placeId: string) {
     const request: google.maps.places.PlaceDetailsRequest = {
       placeId: placeId,
-      fields: ['name', 'formatted_address', 'geometry']
+      fields: ['name', 'formatted_address', 'geometry', 'rating', 'website', 'photos']
     };
 
     this.service.getDetails(request, (place, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK && place) {
-        const location = place.geometry?.location;
-        if (location) {
-          this.ngZone.run(() => {
-            this.selectedLocation = {
-              name: place.name || 'Unknown location',
-              address: place.formatted_address || 'No address available',
-              position: {
-                lat: location.lat(),
-                lng: location.lng()
-              }
-            };
-          });
-        } else {
-          this.setUnknownLocation(lat, lng);
-        }
+        this.ngZone.run(() => {
+          const lat = place.geometry?.location?.lat();
+          const lng = place.geometry?.location?.lng();
+          this.selectedLocation = {
+            name: place.name || 'Unknown location',
+            address: place.formatted_address || 'No address available',
+            position: {
+              lat: lat ?? 0,
+              lng: lng ?? 0
+            },
+            rating: place.rating || 'No rating available',
+            website: place.website || 'No website available',
+            photos: place.photos || []
+          };
+        });
       } else {
-        this.setUnknownLocation(lat, lng);
+        this.setUnknownLocation(0, 0);
       }
     });
   }
@@ -116,7 +118,10 @@ export class MapComponent implements OnInit {
       this.selectedLocation = {
         name: 'Unknown location',
         address: 'No address available',
-        position: { lat, lng }
+        position: { lat, lng },
+        rating: 'No rating available',
+        website: 'No website available',
+        photos: []
       };
     });
   }

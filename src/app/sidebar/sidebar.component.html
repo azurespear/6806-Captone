@@ -1,10 +1,15 @@
-<div class="sidebar">
+<div class="sidebar" fxLayout="column" fxLayoutGap="10px" fxFlexFill>
   <h2 *ngIf="location">{{ location.name }}</h2>
   <p *ngIf="location">
     {{ location.address }}<br>
     Latitude: {{ location.position.lat }}<br>
-    Longitude: {{ location.position.lng }}
+    Longitude: {{ location.position.lng }}<br>
+    Rating: {{ location.rating }}<br>
+    <a *ngIf="location.website" [href]="location.website" target="_blank">Website</a>
   </p>
+  <div *ngIf="location && location.photos.length > 0">
+    <img *ngFor="let photo of location.photos" [src]="photo.getUrl()" style="max-width: 100%; height: auto; margin-top: 10px;">
+  </div>
   <div *ngIf="!location">
     <p>Click on a place marker to see details</p>
   </div>
