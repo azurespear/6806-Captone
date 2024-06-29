@@ -56,35 +56,6 @@ export class MapComponent implements OnInit {
     this.map = new google.maps.Map(document.getElementById('map') as HTMLElement, mapOptions);
     this.service = new google.maps.places.PlacesService(this.map);
 
-    // Initialize Autocomplete
-    const input = document.getElementById('search-input') as HTMLInputElement;
-    this.autocomplete = new google.maps.places.Autocomplete(input);
-    this.autocomplete.bindTo('bounds', this.map);
-
-    this.autocomplete.addListener('place_changed', () => {
-      this.ngZone.run(() => {
-        const place = this.autocomplete.getPlace();
-        if (!place.geometry || !place.geometry.location) {
-          return;
-        }
-
-        this.clearMarkers();
-        this.addMarker(place.geometry.location, place);
-
-        this.selectedLocation = {
-          name: place.name || 'Unknown location',
-          address: place.formatted_address || place.vicinity || 'No address available',
-          position: {
-            lat: place.geometry.location.lat(),
-            lng: place.geometry.location.lng()
-          },
-          rating: place.rating || 'No rating available',
-          website: place.website || 'No website available',
-          photos: place.photos || []
-        };
-      });
-    });
-
     // Add listener for POI clicks
     this.map.addListener('click', (event: any) => {
       if (event.placeId) {
