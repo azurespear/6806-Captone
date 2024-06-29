@@ -4,9 +4,9 @@
 </div>
 
   <div class="navigation" fxLayout="row" fxLayout.xs="row" fxLayoutAlign="space-evenly center">
-    <button mat-flat-button color="primary" (click)="onStoreButtonClick()">Store</button>
-    <button mat-flat-button color="primary" (click)="onHospitalButtonClick()">Hospital</button>
-    <button mat-flat-button color="primary" (click)="onParkButtonClick()">Park</button>
+    <button mat-flat-button color="primary" (click)="searchNearby('pet_store')">Store</button>
+    <button mat-flat-button color="primary" (click)="searchNearby('veterinary_care')">Hospital</button>
+    <button mat-flat-button color="primary" (click)="searchNearby('park')">Park</button>
   </div>
  
   <div fxLayout="row" fxLayout.xs="column" fxFill>

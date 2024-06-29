@@ -2,8 +2,6 @@
   <h2 *ngIf="location">{{ location.name }}</h2>
   <p *ngIf="location">
     {{ location.address }}<br>
-    Latitude: {{ location.position.lat }}<br>
-    Longitude: {{ location.position.lng }}<br>
     Rating: {{ location.rating }}<br>
     <a *ngIf="location.website" [href]="location.website" target="_blank">Website</a>
   </p>
