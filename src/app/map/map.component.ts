@@ -67,8 +67,6 @@ export class MapComponent implements OnInit {
         if (!place.geometry || !place.geometry.location) {
           return;
         }
-        this.map.setCenter(place.geometry.location);
-        this.map.setZoom(15);
 
         this.clearMarkers();
         this.addMarker(place.geometry.location, place);
@@ -143,10 +141,6 @@ export class MapComponent implements OnInit {
             this.addMarker(result.geometry.location, result);
           }
         });
-        if (results[0].geometry?.location) {
-          this.map.setCenter(results[0].geometry.location);
-          this.map.setZoom(15);
-        }
       }
     });
   }
