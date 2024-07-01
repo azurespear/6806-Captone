@@ -21,6 +21,7 @@ export class MapComponent implements OnInit {
   map!: google.maps.Map;
   service!: google.maps.places.PlacesService;
   markers: google.maps.Marker[] = [];
+  polygons: google.maps.Polygon[] = [];
   autocomplete!: google.maps.places.Autocomplete;
 
   constructor(private http: HttpClient, private ngZone: NgZone) {}
@@ -63,6 +64,7 @@ export class MapComponent implements OnInit {
         this.getPlaceDetails(event.placeId);
       }
     });
+
   }
 
   addMarker(location: google.maps.LatLng | google.maps.LatLngLiteral, place?: google.maps.places.PlaceResult) {
@@ -100,7 +102,7 @@ export class MapComponent implements OnInit {
   searchNearby(type: string) {
     const request: google.maps.places.PlaceSearchRequest = {
       location: this.map.getCenter() as google.maps.LatLng,
-      radius: 5000, // 5 km radius
+      radius: 10000, // 5 km radius
       type: type // Correct type specification as a string
     };
 
@@ -156,5 +158,49 @@ export class MapComponent implements OnInit {
         photos: []
       };
     });
+  }
+
+  addPolygons() {
+    this.http.get('/assets/dog-off-leash-parks.json').subscribe((data: any) => {
+      data.forEach((park: any) => {
+        const paths = park.geom.geometry.coordinates[0].map((coord: any) => ({
+          lat: coord[1],
+          lng: coord[0]
+        }));
+
+        const polygon = new google.maps.Polygon({
+          paths: paths,
+          strokeColor: '#0080FE',
+          strokeOpacity: 0.75,
+          strokeWeight: 1,
+          fillColor: '#0080FE',
+          fillOpacity: 0.5
+        });
+
+        polygon.setMap(this.map);
+        this.polygons.push(polygon);
+      });
+    });
+  }
+
+  clearPolygons() {
+    this.polygons.forEach(polygon => polygon.setMap(null));
+    this.polygons = [];
+  }
+
+  storeButtonClick(){
+    this.searchNearby('pet_store');
+    this.clearPolygons();
+  }
+
+  hospitalButtonClick(){
+    this.searchNearby('veterinary_care');
+    this.clearPolygons();
+  }
+
+  parkButtonClick(){
+    this.searchNearby('park');
+    this.clearPolygons();
+    this.addPolygons();
   }
 }
