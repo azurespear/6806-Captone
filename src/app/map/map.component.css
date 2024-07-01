@@ -1,0 +1,40 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 0 100px;
+  }
+
+  .navigation button {
+    flex: 1;
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .sidebar-container {
+    overflow: auto;
+  }
+  
+  .map-container {
+    position: relative;
+    height: 100%;
+  }
+  
+  #map {
+    height: 100%;
+    width: 100%;
+  }

@@ -1,0 +1,15 @@
+.sidebar {
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-right: 1px solid #ddd;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.sidebar h2 {
+  margin-top: 0;
+}
+
+.sidebar p {
+  margin: 5px 0;
+}

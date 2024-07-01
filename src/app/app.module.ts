@@ -22,6 +22,9 @@ import { MatRadioModule} from "@angular/material/radio";
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -34,7 +37,8 @@ import { MatCardModule } from '@angular/material/card';
     RegComponent,
     ProfileComponent,
     MapComponent,
-    AiComponent
+    AiComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,9 @@ import { MatCardModule } from '@angular/material/card';
     MatRadioModule,
     FormsModule,
     FlexLayoutModule,
-    MatCardModule
+    MatCardModule,
+    GoogleMapsModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration(),
