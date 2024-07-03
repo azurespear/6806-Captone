@@ -37,7 +37,7 @@ export class ProfileComponent implements OnInit {
   confirmEdit(content: string): void {
     const updatedData = {
       userName: this.username,
-      password: 'string',
+      password: this.password,
       userEmail: this.email
     };
 

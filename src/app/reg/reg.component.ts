@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-reg',
@@ -8,7 +10,9 @@ import { Router } from '@angular/router';
   styleUrl: './reg.component.css'
 })
 export class RegComponent {  
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, 
+    private router: Router,
+    private dialog: MatDialog) { }
   email: string = '';
   username: string = '';
   password: string = '';
@@ -20,8 +24,15 @@ export class RegComponent {
         this.router.navigate(['']); // Navigate to the login page upon successful registration
       },
       error => {
+        this.openErrorDialog(error.message || 'Registration failed. Please try again.');
         console.error('Error registering', error);
       }
     );
+  }
+
+  openErrorDialog(message: string): void {
+    this.dialog.open(ErrorDialogComponent, {
+      data: { message }
+    });
   }
 }

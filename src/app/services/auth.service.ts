@@ -1,7 +1,8 @@
+// auth.service.ts
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, BehaviorSubject, throwError } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
 import { isPlatformBrowser } from '@angular/common';
 import * as CryptoJS from 'crypto-js';
 
@@ -9,8 +10,8 @@ import * as CryptoJS from 'crypto-js';
   providedIn: 'root'
 })
 export class AuthService {
-  private loginUrl = 'https://57.152.32.19:8443/users/login'; // Updated to HTTPS
-  private registerUrl = 'https://57.152.32.19:8443/users/create'; // Updated to HTTPS
+  private loginUrl = 'https://57.152.32.19:8443/users/login'; // Login URL
+  private registerUrl = 'https://57.152.32.19:8443/users/create'; // Register URL
   private tokenSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(this.getTokenFromCookies());
 
   constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) { }
@@ -64,8 +65,16 @@ export class AuthService {
     return this.http.post<any>(this.loginUrl, body, { headers })
       .pipe(
         tap(response => {
-          this.tokenSubject.next(response.token); // Assuming the token is in the response
-          this.setTokenToCookies(response.token); // Store token in cookies
+          if (response.token) {
+            this.tokenSubject.next(response.token);
+            this.setTokenToCookies(response.token);
+          } else if (response.message) {
+            throw new Error(response.message);
+          }
+        }),
+        catchError(error => {
+          console.error('Login error:', error);
+          return throwError(error);
         })
       );
   }
@@ -86,7 +95,18 @@ export class AuthService {
       ua: 'string'
     };
 
-    return this.http.post<any>(this.registerUrl, body, { headers });
+    return this.http.post<any>(this.registerUrl, body, { headers })
+      .pipe(
+        tap(response => {
+          if (response.message) {
+            throw new Error(response.message);
+          }
+        }),
+        catchError(error => {
+          console.error('Registration error:', error);
+          return throwError(error);
+        })
+      );
   }
 
   logout(): void {
