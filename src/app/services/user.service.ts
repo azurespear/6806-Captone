@@ -1,3 +1,4 @@
+// user.service.ts
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -8,8 +9,8 @@ import { isPlatformBrowser } from '@angular/common';
   providedIn: 'root'
 })
 export class UserService {
-  private profileUrl = 'http://57.152.32.19:8080/users/profile'; // Profile URL for GET
-  private apiUrl = 'http://57.152.32.19:8080/users'; // Base URL for PUT
+  private profileUrl = 'https://57.152.32.19:8443/users/profile'; // Updated to HTTPS
+  private apiUrl = 'https://57.152.32.19:8443/users'; // Updated to HTTPS
 
   constructor(private http: HttpClient, private authService: AuthService, @Inject(PLATFORM_ID) private platformId: Object) { }
 
@@ -29,7 +30,7 @@ export class UserService {
     return this.http.get<any>(this.profileUrl, options);
   }
 
-  updateUser(userData: { userName: string, password: string, userEmail: string }): Observable<any> {
+  updateUser(userData: { userName: string, userEmail: string}): Observable<any> {
     const options = this.getHttpOptions();
     console.log(generateCurlCommand(this.apiUrl, 'PUT', options.headers, userData));
     return this.http.put<any>(this.apiUrl, userData, options);

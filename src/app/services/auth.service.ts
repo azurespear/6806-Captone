@@ -1,4 +1,3 @@
-// auth.service.ts
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
@@ -10,8 +9,8 @@ import * as CryptoJS from 'crypto-js';
   providedIn: 'root'
 })
 export class AuthService {
-  private loginUrl = 'http://57.152.32.19:8080/users/login'; // Login URL
-  private registerUrl = 'http://57.152.32.19:8080/users/create'; // Register URL
+  private loginUrl = 'https://57.152.32.19:8443/users/login'; // Updated to HTTPS
+  private registerUrl = 'https://57.152.32.19:8443/users/create'; // Updated to HTTPS
   private tokenSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(this.getTokenFromCookies());
 
   constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) { }
@@ -51,7 +50,7 @@ export class AuthService {
       'accept': '*/*',
       'Content-Type': 'application/json'
     });
-    const encryptedPassword = CryptoJS.MD5(password).toString();
+    const encryptedPassword = CryptoJS.MD5(password).toString().toUpperCase();
     const body = {
       traceID: 'string',
       token: 'string',
@@ -76,7 +75,7 @@ export class AuthService {
       'accept': '*/*',
       'Content-Type': 'application/json'
     });
-    const encryptedPassword = CryptoJS.MD5(password).toString();
+    const encryptedPassword = CryptoJS.MD5(password).toString().toUpperCase();
     const body = {
       traceID: 'string',
       token: 'string',
@@ -99,3 +98,4 @@ export class AuthService {
     return this.tokenSubject.value || this.getTokenFromCookies();
   }
 }
+
