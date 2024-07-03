@@ -1,5 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 declare global {
   interface Window {
@@ -24,7 +26,10 @@ export class MapComponent implements OnInit {
   polygons: google.maps.Polygon[] = [];
   autocomplete!: google.maps.places.Autocomplete;
 
-  constructor(private http: HttpClient, private ngZone: NgZone) {}
+  constructor(private authService: AuthService, 
+    private router: Router, 
+    private http: HttpClient, 
+    private ngZone: NgZone) {}
 
   ngOnInit() {
     if (typeof window !== 'undefined') {
@@ -202,5 +207,10 @@ export class MapComponent implements OnInit {
     this.searchNearby('park');
     this.clearPolygons();
     this.addPolygons();
+  }
+
+  onLogoutButtonClick() {
+    this.authService.logout();
+    this.router.navigate(['']);
   }
 }

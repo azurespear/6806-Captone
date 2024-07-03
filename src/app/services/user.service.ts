@@ -1,8 +1,9 @@
 // user.service.ts
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError  } from 'rxjs';
 import { AuthService } from './auth.service';
+import { catchError } from 'rxjs/operators';
 import { isPlatformBrowser } from '@angular/common';
 import * as CryptoJS from 'crypto-js';
 
@@ -36,7 +37,24 @@ export class UserService {
       ...userData,
       password: CryptoJS.MD5(userData.password).toString().toUpperCase()
     };
-    return this.http.put<any>(this.apiUrl, updatedUserData, options);
+    return this.http.put<any>(this.apiUrl, updatedUserData, options).pipe(
+      catchError(error => {
+        const errorMessage = this.extractErrorMessage(error);
+        console.error('Error updating user data', errorMessage);
+        return throwError({ ...error, extractedMessage: errorMessage });
+      })
+    );
+  }
+
+  private extractErrorMessage(error: any): string {
+    if (error.error && typeof error.error === 'string') {
+      const match = error.error.match(/Duplicate entry .* for key 't_user.unique_user_email'/);
+      if (match) {
+        return 'Email already exsits';
+      }
+      return error.error;
+    }
+    return 'Error updating user data.';
   }
 }
 

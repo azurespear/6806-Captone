@@ -16,8 +16,14 @@ export class RegComponent {
   email: string = '';
   username: string = '';
   password: string = '';
+  repeatPassword: string = '';
 
   onSignUpButtonClick(): void {
+    if (this.password != this.repeatPassword){
+      this.openErrorDialog('Passwords do not match.');
+      return;
+    }
+
     this.authService.register(this.username, this.email, this.password).subscribe(
       response => {
         console.log('Registration successful', response);

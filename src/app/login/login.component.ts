@@ -25,7 +25,7 @@ export class LoginComponent {
         this.router.navigate(['/landing']); // Navigate to the profile page upon successful login
       },
       error => {
-        this.openErrorDialog(error.message || 'Registration failed. Please try again.');
+        this.openErrorDialog(error.message || 'Login failed. Please try again.');
         console.error('Error logging in', error);
       }
     );
