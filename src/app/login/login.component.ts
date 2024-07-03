@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,17 +9,26 @@ import { Router } from '@angular/router';
 })
 
 export class LoginComponent {
-  constructor(private router: Router) { };
   username: string = '';
   password: string = '';
 
-  onLoginButtonClick() {
-    console.log(this.username);
-    console.log(this.password);
-    this.router.navigate(['/landing']);
+  constructor(private authService: AuthService, private router: Router) { }
+
+  onLoginButtonClick(): void {
+    this.authService.login(this.username, this.password).subscribe(
+      response => {
+        console.log('Login successful', response);
+        this.router.navigate(['/landing']); // Navigate to the profile page upon successful login
+      },
+      error => {
+        console.error('Error logging in', error);
+      }
+    );
   }
 
   onSignUpButtonClick() {
     this.router.navigate(['/reg']);
   }
+
 } 
+
