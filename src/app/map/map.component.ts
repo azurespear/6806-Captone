@@ -107,7 +107,7 @@ export class MapComponent implements OnInit {
   searchNearby(type: string) {
     const request: google.maps.places.PlaceSearchRequest = {
       location: this.map.getCenter() as google.maps.LatLng,
-      radius: 10000, // 5 km radius
+      radius: 20000, // 20 km radius
       type: type // Correct type specification as a string
     };
 
