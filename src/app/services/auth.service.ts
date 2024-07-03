@@ -62,7 +62,7 @@ export class AuthService {
       ua: 'string'
     };
 
-    return this.http.post<any>(this.loginUrl, body, { headers })
+    return this.http.post<any>(this.loginUrl, body, { headers, withCredentials: true  })
       .pipe(
         tap(response => {
           if (response.token) {
@@ -95,7 +95,7 @@ export class AuthService {
       ua: 'string'
     };
 
-    return this.http.post<any>(this.registerUrl, body, { headers })
+    return this.http.post<any>(this.registerUrl, body, { headers, withCredentials: true  })
       .pipe(
         tap(response => {
           if (response.message) {

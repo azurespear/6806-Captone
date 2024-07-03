@@ -1,7 +1,10 @@
 <div class="container">
   <div class="header">
     <h2>Petropolis</h2>
-    <button mat-flat-button color="primary" routerLink="/landing">Back</button>
+    <div fxLayout="row" fxLayout.xs="row" fxLayoutGap="20px" fxLayoutAlign="space-evenly center">
+      <button mat-flat-button color="primary" routerLink="/landing">Back</button>
+      <button mat-flat-button color="primary" (click)="onLogoutButtonClick()">Log out</button>
+    </div>
   </div>
  
   <div class="navigation" fxLayout="row" fxLayout.xs="row" fxLayoutAlign="space-evenly center">
