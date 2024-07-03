@@ -22,7 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ViewComponent } from './view/view.component';
 import { MatCardModule } from '@angular/material/card';
-//import { PostComponent } from './post/post.component';
+
 
 
 @NgModule({
