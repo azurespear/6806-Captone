@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { MapComponent } from './map/map.component';
 import { AiComponent } from './ai/ai.component';
 import { ViewComponent } from './view/view.component';
+import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 
 // Module
 import { NgModule } from '@angular/core';
@@ -19,6 +20,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatRadioModule} from "@angular/material/radio";
+import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
@@ -38,7 +40,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProfileComponent,
     MapComponent,
     AiComponent,
-    SidebarComponent
+    SidebarComponent,
+    ErrorDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     MatInputModule,
     MatRadioModule,
+    MatDialogModule,
     FormsModule,
     FlexLayoutModule,
     MatCardModule,
