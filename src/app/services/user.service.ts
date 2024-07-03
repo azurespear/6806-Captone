@@ -48,9 +48,13 @@ export class UserService {
 
   private extractErrorMessage(error: any): string {
     if (error.error && typeof error.error === 'string') {
-      const match = error.error.match(/Duplicate entry .* for key 't_user.unique_user_email'/);
-      if (match) {
+      const matchEmail = error.error.match(/Duplicate entry .* for key 't_user.unique_user_email'/);
+      const matchUserName = error.error.match(/Duplicate entry .* for key 't_user.unique_user_name'/);
+      if (matchEmail) {
         return 'Email already exsits';
+      }
+      if (matchUserName) {
+        return 'Username already exsits';
       }
       return error.error;
     }
