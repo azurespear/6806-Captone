@@ -29,7 +29,6 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MyPostComponent } from './my-post/my-post.component';
-import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -67,8 +66,7 @@ import { CookieService } from 'ngx-cookie-service';
   ],
   providers: [
     provideClientHydration(),
-    provideAnimationsAsync(),
-    CookieService
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })

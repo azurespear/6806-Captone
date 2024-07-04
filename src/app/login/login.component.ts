@@ -3,7 +3,6 @@ import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -17,15 +16,12 @@ export class LoginComponent {
 
   constructor(private authService: AuthService, 
     private router: Router,
-    private dialog: MatDialog,
-    private cookieService: CookieService,
-  ) { }
+    private dialog: MatDialog) { }
 
   onLoginButtonClick(): void {
     this.authService.login(this.username, this.password).subscribe(
       response => {
         console.log('Login successful', response);
-        this.setAuthToken(response.token);
         this.router.navigate(['/landing']); // Navigate to the profile page upon successful login
       },
       error => {
@@ -33,13 +29,6 @@ export class LoginComponent {
         console.error('Error logging in', error);
       }
     );
-  }
-
-  setAuthToken(token: string): void {
-    const expireDate = new Date();
-    expireDate.setDate(expireDate.getDate() + 1); // Cookie expires in 1 day
-
-    this.cookieService.set('authToken', token, expireDate, '/', '', true, 'None');
   }
 
   onSignUpButtonClick() {
