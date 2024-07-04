@@ -10,7 +10,7 @@ import { MapComponent } from './map/map.component';
 import { AiComponent } from './ai/ai.component';
 import { MyPostComponent } from './my-post/my-post.component';
 import { PostComponent } from './post/post.component';
-import { MyPostComponent } from './my-post/my-post.component';
+
 
 const routes: Routes = [
   {
