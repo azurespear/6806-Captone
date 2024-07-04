@@ -8,7 +8,7 @@
     gap: 20px;
     background-color: #f9f9f9;
 }
-  
+
 .left {
     display: flex;
     flex-direction: column;
@@ -24,4 +24,31 @@
     flex-direction: column;
     padding: 50px;
     flex: 2;
+}
+.item {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: white;
+    padding: 10px 20px;
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 15px;
+    word-break: break-all;
+}
+  
+.item > span:first-child {
+    margin-right: 20px;
+    font-weight: 500;
+    width: 120px;
+    text-align: right;
+}
+  
+.item > span:last-child {
+    flex: 1
+}
+  
+.item input, .item textarea {
+    width: 100%;
+    padding: 10px;
 }
