@@ -9,6 +9,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { MapComponent } from './map/map.component';
 import { AiComponent } from './ai/ai.component';
 import { PostComponent } from './post/post.component';
+import { MyPostComponent } from './my-post/my-post.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,14 @@ const routes: Routes = [
   {
     path: 'post',
     component: PostComponent
+  },
+  {
+    path: 'post/:id',
+    component: PostComponent
+  },
+  {
+    path: 'my-post',
+    component: MyPostComponent
   }
 ];
 

@@ -28,6 +28,7 @@ import { MatCardModule } from '@angular/material/card';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MyPostComponent } from './my-post/my-post.component';
 
 
 
@@ -44,7 +45,8 @@ import { HttpClientModule } from '@angular/common/http';
     AiComponent,
     PostComponent,
     SidebarComponent,
-    ErrorDialogComponent
+    ErrorDialogComponent,
+    MyPostComponent
   ],
   imports: [
     BrowserModule,
