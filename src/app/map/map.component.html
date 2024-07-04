@@ -13,11 +13,11 @@
     <button mat-flat-button color="primary" (click)="parkButtonClick()">Park</button>
   </div>
 
-  <div fxLayout="row" fxLayout.xs="row" fxFill>
-    <div fxFlex="25" fxFlex.xs="100" class="sidebar-container">
+  <div fxLayout="row" fxLayout.xs="column" fxFill>
+    <div fxFlex="25" fxFlex.xs="25" fxFlexOrder.xs="2" class="sidebar-container">
       <app-sidebar [location]="selectedLocation"></app-sidebar>
     </div>
-    <div fxFlex="75" fxFlex.xs="100" class="map-container">
+    <div fxFlex="75" fxFlex.xs="75" fxFlexOrder.xs="1" class="map-container">
       <div id="map" class="map"></div>
     </div>
   </div>

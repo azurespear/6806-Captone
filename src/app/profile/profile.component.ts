@@ -67,6 +67,11 @@ export class ProfileComponent implements OnInit {
     );
   }
   
+  cancelEdit(content: string): void {
+    this.showContent = content;
+    this.loadUserData();
+  }
+
   openErrorDialog(message: string): void {
     this.dialog.open(ErrorDialogComponent, {
       data: { message }
