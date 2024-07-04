@@ -2,3 +2,14 @@
     display: flex;
     justify-content: space-between;
 }
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 0 100px;
+  }
+
+.navigation button {
+    flex: 1;
+  }
