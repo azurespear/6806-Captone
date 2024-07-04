@@ -2,3 +2,26 @@
     display: flex;
     justify-content: space-between;
 }
+.content {
+    display: flex;
+    margin-top: 50px;
+    gap: 20px;
+    background-color: #f9f9f9;
+}
+  
+.left {
+    display: flex;
+    flex-direction: column;
+    background-color: #e1e1e1;
+    padding: 20px;
+    flex: 1;
+}
+  
+.right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px;
+    flex: 2;
+}
