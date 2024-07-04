@@ -1,0 +1,24 @@
+<div class="header">
+  <h2>Petropolis</h2>
+  <button mat-flat-button color="primary" routerLink="/forum">Back</button>
+</div>
+
+<div class="content">
+  <div class="post" *ngFor="let post of posts">
+    <div class="left">
+      <img [src]="post.image" />
+      <div>
+        <div>
+          <span class="name">{{post.name}}</span>
+          <span class="type">{{post.type}}</span>
+        </div>
+        <div class="area">{{post.area}}</div>
+      </div>
+    </div>
+    <div>
+      <button mat-flat-button color="primary" routerLink="/view" style="margin-right: 10px">Details</button>
+      <button mat-flat-button color="primary" routerLink="/post/1">Edit</button>
+    </div>
+  </div>
+</div>
+
