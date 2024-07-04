@@ -42,7 +42,7 @@ import { HttpClientModule } from '@angular/common/http';
     ProfileComponent,
     MapComponent,
     AiComponent,
-    PostComponent
+    PostComponent,
     SidebarComponent,
     ErrorDialogComponent
   ],
