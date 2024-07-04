@@ -7,6 +7,7 @@ import { RegComponent } from './reg/reg.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MapComponent } from './map/map.component';
 import { AiComponent } from './ai/ai.component';
+import { PostComponent } from './post/post.component';
 import { ViewComponent } from './view/view.component';
 import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 
@@ -29,6 +30,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +42,7 @@ import { HttpClientModule } from '@angular/common/http';
     ProfileComponent,
     MapComponent,
     AiComponent,
+    PostComponent,
     SidebarComponent,
     ErrorDialogComponent
   ],

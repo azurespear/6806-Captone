@@ -1,0 +1,57 @@
+<div class="header">
+    <h2>Petropolis</h2>
+    <div>
+      <button mat-flat-button color="primary" style="margin-right: 20px">Publish</button>
+      <button mat-flat-button color="primary" routerLink="/forum">Back</button>
+    </div>
+  </div>
+  
+  
+  <div class="content">
+    <div class="left">
+      <div *ngIf="!uploadImage" class="upload-picture" (click)="file.click()">
+        <span>+upload picture</span>
+      </div>
+      <img *ngIf="uploadImage" [src]="uploadImage" alt="image" style="width: 100%;" />
+      <input type="file" style="display: none" #file (change)="imageChange($event)" />
+    </div>
+    <div class="right">
+      <div class="item">
+        <span>Name:</span>
+        <span>
+          <input />
+        </span>
+      </div>
+      <div class="item">
+        <span>Sex:</span>
+        <span>
+          <input />
+        </span>
+      </div>
+      <div class="item">
+        <span>Species:</span>
+        <span>
+          <input />
+        </span>
+      </div>
+      <div class="item">
+        <span>Description:</span>
+        <span>
+          <textarea rows="5"></textarea>
+        </span>
+      </div>
+      <div class="item">
+        <span>Contact Email:</span>
+        <span><input /></span>
+      </div>
+      <div class="item">
+        <span>Area last seen:</span>
+        <span><input /></span>
+      </div>
+      <div class="item">
+        <span>Date last seen:</span>
+        <span><input /></span>
+      </div>
+    </div>
+  </div>
+  

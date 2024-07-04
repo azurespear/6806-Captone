@@ -8,6 +8,7 @@ import { RegComponent } from './reg/reg.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MapComponent } from './map/map.component';
 import { AiComponent } from './ai/ai.component';
+import { PostComponent } from './post/post.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'ai',
     component: AiComponent
+  },
+  {
+    path: 'post',
+    component: PostComponent
   }
 ];
 
