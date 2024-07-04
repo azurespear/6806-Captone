@@ -7,7 +7,7 @@
   </div>
 
 <div *ngIf="showContent === 'edit'">
-    <div fxLayout="column" fxLayout.xs="row" fxLayoutGap="20px" fxLayoutAlign="center center" style="height: 75vh;">
+    <div fxLayout="column" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutAlign="center center" style="height: 75vh;">
         <mat-form-field appearance="fill" style="width: 300px;">
         <mat-label>Email</mat-label>
             <input matInput [(ngModel)]="email" name="email">
@@ -25,10 +25,11 @@
               <input matInput type="password" [(ngModel)]="repeatPassword" name="password">
           </mat-form-field>
         <button mat-flat-button color="primary" (click)="confirmEdit('profile')">Confirm</button>
+        <button mat-flat-button color="primary" (click)="cancelEdit('profile')">Cancel</button>
     </div>
 </div>
 <div *ngIf="showContent === 'profile'">
-    <div fxLayout="column" fxLayout.xs="row" fxLayoutGap="20px" fxLayoutAlign="center center" style="height: 75vh;">
+    <div fxLayout="column" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutAlign="center center" style="height: 75vh;">
         <mat-card appearance="outlined">
             <mat-card-header>
               <mat-card-title>Email</mat-card-title>
