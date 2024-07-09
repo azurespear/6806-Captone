@@ -1,57 +1,56 @@
 <div class="header">
     <h2>Petropolis</h2>
     <div>
-      <button mat-flat-button color="primary" style="margin-right: 20px">Publish</button>
+      <button mat-flat-button color="primary" style="margin-right: 20px" (click)="publish()">Publish</button>
       <button mat-flat-button color="primary" routerLink="/forum">Back</button>
     </div>
   </div>
-  
-  
+
+
   <div class="content">
     <div class="left">
-      <div *ngIf="!uploadImage" class="upload-picture" (click)="file.click()">
+      <div *ngIf="!imageURL" class="upload-picture" (click)="file.click()">
         <span>+upload picture</span>
       </div>
-      <img *ngIf="uploadImage" [src]="uploadImage" alt="image" style="width: 100%;" />
+      <img *ngIf="imageURL" [src]="imageURL" alt="image" style="width: 100%;" (click)="file.click()" />
       <input type="file" style="display: none" #file (change)="imageChange($event)" />
     </div>
     <div class="right">
       <div class="item">
         <span>Name:</span>
         <span>
-          <input />
+          <input [(ngModel)]="title" />
         </span>
       </div>
       <div class="item">
         <span>Sex:</span>
         <span>
-          <input />
+          <input [(ngModel)]="sex" />
         </span>
       </div>
       <div class="item">
         <span>Species:</span>
         <span>
-          <input />
+          <input [(ngModel)]="species" />
         </span>
       </div>
       <div class="item">
         <span>Description:</span>
         <span>
-          <textarea rows="5"></textarea>
+          <textarea rows="5" [(ngModel)]="content"></textarea>
         </span>
       </div>
       <div class="item">
         <span>Contact Email:</span>
-        <span><input /></span>
+        <span><input [(ngModel)]="email" /></span>
       </div>
-      <div class="item">
+      <div class="item" *ngIf="postType === 'LOST'">
         <span>Area last seen:</span>
-        <span><input /></span>
+        <span><input [(ngModel)]="address" /></span>
       </div>
-      <div class="item">
+      <div class="item" *ngIf="postType === 'LOST'">
         <span>Date last seen:</span>
-        <span><input /></span>
+        <span><input [(ngModel)]="lostDate" /></span>
       </div>
     </div>
   </div>
-  

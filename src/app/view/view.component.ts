@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {PostService} from "../services/post.service";
+import {ActivatedRoute} from "@angular/router";
+import {CommentService} from "../services/comment.service";
 
 @Component({
   selector: 'app-view',
@@ -6,9 +9,47 @@ import { Component } from '@angular/core';
   styleUrl: './view.component.css'
 })
 export class ViewComponent {
-  comments = [
-    { id: 1, author: 'Kristina F.', description: 'Is she tattooed and chipped?', date: '2024-01-01: 10:00:00' },
-    { id: 2, author: 'Coleen M.', description: '🙏🙏🙏', date: '2024-01-01: 10:00:00' },
-    { id: 3, author: 'Crystal s.', description: 'Is she tattooed and chipped?', date: '2024-01-01: 10:00:00' },
-  ]
+
+  data: any = null
+  content = ""
+  postId: number = 0
+  comments: any = []
+
+  constructor(
+    private postService: PostService,
+    private commentService: CommentService,
+    private route: ActivatedRoute,
+  ) {}
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+       this.postId = Number(params['id'])
+       this.getPostById();
+       this.getComments();
+       setInterval(() => {
+         this.getComments();
+       }, 1000)
+    });
+  }
+
+  getPostById() {
+    this.postService.getPostById(this.postId).subscribe(res => {
+      this.data = res
+    })
+  }
+
+  submitComment() {
+    if (this.content) {
+      this.commentService.addCommentToPost(this.postId, this.content).subscribe(() => {
+        this.content = "";
+        this.getComments();
+      })
+    }
+  }
+
+  getComments() {
+    this.commentService.getCommentsFromPost(this.postId).subscribe(res => {
+      this.comments = res
+    })
+  }
 }
