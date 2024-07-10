@@ -65,5 +65,17 @@ export class PostComponent implements OnInit {
     );
   }
 
-  
+  publish() {
+    if (this.title && this.sex && this.species && this.postType && this.content && this.email && this.imageURL) {
+      if (this.id) {
+        this.postService.updatePost(Number(this.id), this.title, this.sex, this.species, this.postType, this.content, this.email, this.imageURL, this.address, this.lostDate).subscribe(() => {
+          this.router.navigate(['/forum'])
+        })
+      } else {
+        this.postService.publishPost(this.title, this.sex, this.species, this.postType, this.content, this.email, this.imageURL, this.address, this.lostDate).subscribe(() => {
+          this.router.navigate(['/forum'])
+        })
+      }
+    }
+  }
 }
