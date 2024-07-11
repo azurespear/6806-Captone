@@ -13,7 +13,7 @@ export class PostService {
 
   publishPost(title: string, sex: string, species: string, postType: string, content: string, email: string, imageURL: string, address: string, lostDate: string): Observable<any> {
     const headers = new HttpHeaders({
-      'accept': '*/*',
+      
       'Content-Type': 'application/json'
     });
     const body = {
