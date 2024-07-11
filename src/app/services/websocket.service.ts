@@ -1,7 +1,7 @@
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject, Observable, Observer } from 'rxjs';
-import { share } from 'rxjs/operators';
+import { share, filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +33,13 @@ export class WebSocketService {
     this.socket.send(message);
   }
 
-  getMessages(): Observable<string> {
-    return this.messages.asObservable().pipe(share());
+  getMessages(filterFn?: (message: string) => boolean): Observable<string> {
+    let observable = this.messages.asObservable().pipe(share());
+
+    if (filterFn) {
+      observable = observable.pipe(filter(filterFn));
+    }
+
+    return observable;
   }
 }

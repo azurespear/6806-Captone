@@ -36,6 +36,7 @@ export class AiComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       this.session_id = this.generateSessionId();
       const cachedMessages = this.storageService.getItem('messages');
+      console.log(this.messages.toString())
       if (cachedMessages) {
         this.messages = JSON.parse(cachedMessages);
       } else {
@@ -45,8 +46,18 @@ export class AiComponent implements OnInit {
       console.log('Server-side rendering');
     }
 
-    this.webSocketService.getMessages().subscribe(message => {
+    console.log('Before', this.messages.length);
+    this.messages.forEach(msg => {
+      console.log(this.decodeBuffer(msg.content));
+    });
+
+    this.webSocketService.getMessages(message =>
+      message.trim() !== '' && !message.includes('Request served by')).subscribe(message => {
       this.messages.push({ content: message, isAnswer: true });
+      console.log('After', this.messages.length);
+      this.messages.forEach(msg => {
+        console.log(this.decodeBuffer(msg.content));
+      });
       if (isPlatformBrowser(this.platformId)) {
         this.storageService.setItem('messages', JSON.stringify(this.messages));
       }
@@ -79,6 +90,15 @@ export class AiComponent implements OnInit {
     this.session_id = this.generateSessionId();
     if (isPlatformBrowser(this.platformId)) {
       this.storageService.removeItem('messages');
+    }
+  }
+
+  private decodeBuffer(buffer: any): string {
+    if (typeof buffer === 'string') {
+      return buffer;
+    } else {
+      const textDecoder = new TextDecoder();
+      return textDecoder.decode(new Uint8Array(buffer));
     }
   }
 }
