@@ -9,7 +9,10 @@ import { AuthService } from '../services/auth.service';
 })
 
 export class LandingComponent {
-  constructor(private authService: AuthService, private router: Router) { };
+  constructor(
+    private authService: AuthService, 
+    private router: Router
+  ) { };
 
   onProfileButtonClick() {
     this.router.navigate(['/profile']);

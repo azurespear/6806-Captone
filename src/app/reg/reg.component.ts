@@ -10,9 +10,12 @@ import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
   styleUrl: './reg.component.css'
 })
 export class RegComponent {  
-  constructor(private authService: AuthService, 
+  constructor(
+    private authService: AuthService, 
     private router: Router,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog
+  ) { }
+  
   email: string = '';
   username: string = '';
   password: string = '';
@@ -20,7 +23,12 @@ export class RegComponent {
 
   onSignUpButtonClick(): void {
     if (this.password != this.repeatPassword){
-      this.openErrorDialog('Passwords do not match.');
+      this.openErrorDialog('Passwords do not match');
+      return;
+    }
+
+    if (this.password == ''){
+      this.openErrorDialog('Need passwords');
       return;
     }
 
