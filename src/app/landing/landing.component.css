@@ -13,3 +13,21 @@
 .navigation button {
     flex: 1;
   }
+  
+.main-content {
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: 50px;
+}
+
+.section {
+  width: 100%;
+  margin-bottom: 40px;
+  margin-top: 100px;
+}
+
+.map-area, .lost-pet-community, .help-section {
+  width: 20%;
+  text-align: center;
+}
+  

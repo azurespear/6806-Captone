@@ -14,9 +14,11 @@ export class LoginComponent {
   username: string = '';
   password: string = '';
 
-  constructor(private authService: AuthService, 
+  constructor(
+    private authService: AuthService, 
     private router: Router,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog
+  ) { }
 
   onLoginButtonClick(): void {
     this.authService.login(this.username, this.password).subscribe(
