@@ -1,21 +1,30 @@
-<div class="header">
+<div class="header0">
     <h2>Petropolis</h2>
     <button mat-flat-button color="primary" routerLink="/landing">Back</button>
   </div>
 
-<div>
-  <h2>Hi, How can I help you?</h2>
-  <div>
-    <button *ngFor="let question of defaultQuestions.slice(0, 4)" (click)="sendDefaultQuestion(question)">
+<div class="ai-container">
+  <div class="header">
+    <span class="title">AI Helper</span>
+    <button class="refresh-button" (click)="refresh()">Refresh</button>
+  </div>
+  <div class="divider"></div>
+  <div class="message-box">
+    <div *ngFor="let message of messages" class="message-wrapper" [ngClass]="{'answer': message.isAnswer, 'query': !message.isAnswer}">
+      <div class="message" [ngClass]="{'answer': message.isAnswer, 'query': !message.isAnswer}">
+        {{ message.content }}
+      </div>
+    </div>
+  </div>
+  <div class="default-questions">
+    <button *ngFor="let question of defaultQuestions" class="question-button" (click)="sendDefaultQuestion(question)">
       {{ question }}
     </button>
   </div>
-  <div *ngFor="let message of messages">
-    <div [ngClass]="{'query': !message.isAnswer, 'response': message.isAnswer}">
-      {{ message.content }}
-    </div>
+  <div class="input-container">
+    <input type="text" [(ngModel)]="newMessage" placeholder="Enter your message here (Pet-related questions only)" />
+    <button class="send-button" (click)="sendMessage()">Send</button>
   </div>
-  <input [(ngModel)]="newMessage" placeholder="Enter your message here (Pet-related questions only)">
-  <button (click)="sendMessage()">Send</button>
-  <button (click)="refresh()">Refresh</button>
 </div>
+
+

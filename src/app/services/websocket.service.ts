@@ -30,7 +30,11 @@ export class WebSocketService {
   }
 
   sendMessage(message: string) {
-    this.socket.send(message);
+    if (this.socket.readyState === WebSocket.OPEN) {
+      this.socket.send(message);
+    } else {
+      this.messages.next('The session has been closed, please click the refresh button to start a new session.');
+    }
   }
 
   getMessages(filterFn?: (message: string) => boolean): Observable<string> {

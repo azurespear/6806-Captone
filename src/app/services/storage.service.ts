@@ -15,7 +15,6 @@ export class StorageService {
     if (this.isBrowser) {
       localStorage.setItem(key, value);
     } else {
-      // Implement server-side storage if necessary
     }
   }
 
@@ -23,7 +22,6 @@ export class StorageService {
     if (this.isBrowser) {
       return localStorage.getItem(key);
     } else {
-      // Implement server-side storage if necessary
       return null;
     }
   }
@@ -32,7 +30,6 @@ export class StorageService {
     if (this.isBrowser) {
       localStorage.removeItem(key);
     } else {
-      // Implement server-side storage if necessary
     }
   }
 }
