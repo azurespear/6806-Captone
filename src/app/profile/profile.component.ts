@@ -50,7 +50,7 @@ export class ProfileComponent implements OnInit {
     }
 
     if (this.password == ''){
-      this.openErrorDialog('Need passwords');
+      this.openErrorDialog('Need password');
       return;
     }
 
