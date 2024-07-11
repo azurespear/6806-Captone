@@ -29,9 +29,11 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MyPostComponent } from './my-post/my-post.component';
+import { StompService, StompConfig } from '@stomp/ng2-stompjs';
 
-
-
+// Service
+import { WebSocketService } from './services/websocket.service';
+import { StorageService } from './services/storage.service';
 
 @NgModule({
   declarations: [
@@ -66,7 +68,9 @@ import { MyPostComponent } from './my-post/my-post.component';
   ],
   providers: [
     provideClientHydration(),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    WebSocketService,
+    StorageService
   ],
   bootstrap: [AppComponent]
 })

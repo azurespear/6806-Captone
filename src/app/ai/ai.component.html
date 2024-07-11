@@ -2,3 +2,20 @@
     <h2>Petropolis</h2>
     <button mat-flat-button color="primary" routerLink="/landing">Back</button>
   </div>
+
+<div>
+  <h2>Hi, How can I help you?</h2>
+  <div>
+    <button *ngFor="let question of defaultQuestions.slice(0, 4)" (click)="sendDefaultQuestion(question)">
+      {{ question }}
+    </button>
+  </div>
+  <div *ngFor="let message of messages">
+    <div [ngClass]="{'query': !message.isAnswer, 'response': message.isAnswer}">
+      {{ message.content }}
+    </div>
+  </div>
+  <input [(ngModel)]="newMessage" placeholder="Enter your message here (Pet-related questions only)">
+  <button (click)="sendMessage()">Send</button>
+  <button (click)="refresh()">Refresh</button>
+</div>
