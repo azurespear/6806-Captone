@@ -60,18 +60,18 @@ button {
   }
   
   h3 {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.5;
   }
   
   p {
     width: 80%;
-    font-size: 12px;
+    font-size: 14px;
     margin-top: 10px;
   }
 
   button {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.2;
   }
 }

@@ -13,3 +13,15 @@
 .sidebar p {
   margin: 5px 0;
 }
+
+@media only screen and (max-width: 600px) { 
+  .sidebar h2 {
+    margin-top: 0;
+    font-size: 32px;
+  }
+  
+  .sidebar p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+}
