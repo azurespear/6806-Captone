@@ -65,6 +65,7 @@ button {
   }
   
   p {
+    width: 80%;
     font-size: 12px;
     margin-top: 10px;
   }
