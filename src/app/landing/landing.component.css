@@ -1,6 +1,16 @@
 .header {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+width: 200px;
+height: auto;
+margin-top: 10px;
+}
+
+.header-button {
+  margin-top: 10px;
 }
 
 .navigation {
@@ -35,10 +45,6 @@
 p {
   font-size: 16px;
   margin-top: 20px;
-}
-
-button {
-  font-size: 16px;
 }
 
 .uniform-width-button {

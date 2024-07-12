@@ -8,6 +8,17 @@
   text-align: center; 
 }
 
+.logo {
+  width: 200px;
+  height: auto;
+  margin-top: 10px;
+  }
+  
+.header-button {
+  margin-top: 10px;
+}
+
+
 @media only screen and (max-width: 600px) { 
     h2 {
       font-size: 32px;

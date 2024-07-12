@@ -3,6 +3,16 @@
   justify-content: space-between;
 }
 
+.logo {
+  width: 200px;
+  height: auto;
+  margin-top: 10px;
+  }
+  
+.header-button {
+  margin-top: 10px;
+}
+
 .content {
   padding: 0 50px;
 }

@@ -1,11 +1,11 @@
 <div class="container">
   <div class="header">
-    <h2>Petropolis</h2>
-    <div fxLayout="row" fxLayout.xs="row" fxLayoutGap="20px" fxLayoutAlign="space-evenly center">
-      <button mat-flat-button color="primary" routerLink="/landing">Back</button>
+    <img src="assets/Petropolis.svg" alt="Petropolis Logo" class="logo">
+    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-evenly center">
+      <button mat-flat-button color="primary" routerLink="/landing" class="header-button">Back</button>
     </div>
   </div>
- 
+
   <div class="navigation" fxLayout="row" fxLayout.xs="row" fxLayoutAlign="space-evenly center">
     <button mat-flat-button color="primary" (click)="storeButtonClick()">Store</button>
     <button mat-flat-button color="primary" (click)="hospitalButtonClick()">Hospital</button>
