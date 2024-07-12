@@ -12,6 +12,10 @@
   margin-top: 20px;
 }
 
+.custom-card-background {
+  background-color: #e1e1e1; /* Replace with your desired color */
+}
+
 @media only screen and (max-width: 600px) { 
     h2 {
       font-size: 32px;
