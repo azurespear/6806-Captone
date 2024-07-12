@@ -2,7 +2,6 @@
   <h2>Petropolis</h2>
   <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-evenly center">
     <button mat-flat-button color="primary" (click)="onProfileButtonClick()">User Profile</button>
-    <!-- <button mat-flat-button color="primary" (click)="onLogoutButtonClick()">Log out</button> -->
   </div>
 </div>
 
@@ -16,13 +15,13 @@
 <div fxLayout="row" fxLayoutAlign="space-around start" class="section">
   <div fxLayout="column" fxLayoutAlign="start center" class="map-area">
     <h3>Map Area</h3>
-    <button mat-flat-button color="primary" (click)="onMapButtonClick()">Map</button>
+    <button mat-flat-button color="primary" class="uniform-width-button" (click)="onMapButtonClick()">Map</button>
     <p>Find pet supply stores, pet hospitals and nearby parks to walk your pet!</p>
   </div>
 
   <div fxLayout="column" fxLayoutAlign="start center" class="lost-pet-community">
     <h3>Lost Pet Community</h3>
-    <button mat-flat-button color="primary" (click)="onForumButtonClick()">Forum</button>
+    <button mat-flat-button color="primary" class="uniform-width-button" (click)="onForumButtonClick()">Forum</button>
     <p>
       Connect with other pet owners through our online forum, find lost pets and exchange adoption information.
     </p>
@@ -30,7 +29,7 @@
 
   <div fxLayout="column" fxLayoutAlign="start center" class="help-section">
     <h3>Looking for Help?</h3>
-    <button mat-flat-button color="primary" (click)="onAIButtonClick()">AI Helper</button>
+    <button mat-flat-button color="primary" class="uniform-width-button" (click)="onAIButtonClick()">AI Helper</button>
     <p>Get professional advice on pet care through interactive Q&A chatbox</p>
   </div>
 </div>

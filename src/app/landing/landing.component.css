@@ -40,6 +40,11 @@ button {
   font-size: 16px;
 }
 
+.uniform-width-button {
+  width: 200px; 
+  text-align: center; 
+}
+
 @media only screen and (max-width: 600px) {
   .section {
     width: 100%;
@@ -65,5 +70,10 @@ button {
   button {
     font-size: 14px;
     line-height: 1.2;
+  }
+
+  .uniform-width-button {
+    width: 50px; 
+    text-align: center; 
   }
 }
