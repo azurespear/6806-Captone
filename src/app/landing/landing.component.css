@@ -21,6 +21,7 @@
 }
 
 .section {
+  background-color: #E0E0E0;
   width: 100%;
   margin-bottom: 40px;
   margin-top: 100px;
@@ -43,6 +44,10 @@ button {
 .uniform-width-button {
   width: 200px; 
   text-align: center; 
+}
+
+.left-aligned-text {
+  text-align: left;
 }
 
 @media only screen and (max-width: 600px) {

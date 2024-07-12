@@ -11,6 +11,9 @@
       <mat-label>Password</mat-label>
         <input matInput type="password" [(ngModel)]="password" name="password">
     </mat-form-field>
-    <button mat-flat-button color="primary" (click)="onLoginButtonClick()">Login</button>
-    <button mat-flat-button color="primary" (click)="onSignUpButtonClick()">Sign up</button>
+    <button mat-flat-button color="primary" class="uniform-width-button" (click)="onLoginButtonClick()">Login</button>
+    <div style="text-align: center;">
+      <span>Not a member? </span>
+      <a mat-button (click)="onSignUpButtonClick()" style="cursor: pointer; color: blue;">Sign up</a>
+    </div>
 </div>
