@@ -51,4 +51,13 @@ export class ForumComponent implements OnInit {
     }
     this.posts = posts;
   }
+
+  reset() {
+    this.name = ""
+    this.sex = ""
+    this.postType = ""
+    this.datetime = ""
+    this.species = ""
+    this.search();
+  }
 }

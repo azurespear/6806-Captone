@@ -10,8 +10,7 @@ import { AiComponent } from './ai/ai.component';
 import { PostComponent } from './post/post.component';
 import { ViewComponent } from './view/view.component';
 import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
-import { MyPostComponent } from './my-post/my-post.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+
 // Module
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
@@ -27,7 +26,12 @@ import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { SidebarComponent } from './sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MyPostComponent } from './my-post/my-post.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 
 
 
@@ -61,7 +65,10 @@ import { HttpClientModule } from '@angular/common/http';
     FlexLayoutModule,
     MatCardModule,
     GoogleMapsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
   providers: [
     provideClientHydration(),

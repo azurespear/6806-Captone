@@ -25,13 +25,30 @@
       <div class="item">
         <span>Sex:</span>
         <span>
-          <input [(ngModel)]="sex" />
+          <mat-form-field style="width: 100%">
+            <mat-label>Sex</mat-label>
+            <mat-select [(ngModel)]="sex">
+              <mat-option value="MALE">Male</mat-option>
+              <mat-option value="FEMALE">Female</mat-option>
+            </mat-select>
+          </mat-form-field>
         </span>
       </div>
       <div class="item">
         <span>Species:</span>
         <span>
-          <input [(ngModel)]="species" />
+          <mat-form-field style="width: 100%">
+            <mat-label>Species</mat-label>
+            <mat-select [(ngModel)]="species">
+              <mat-option value="DOG">Dog</mat-option>
+              <mat-option value="CAT">Cat</mat-option>
+              <mat-option value="BIRD">Bird</mat-option>
+              <mat-option value="RODENT">Rodent</mat-option>
+              <mat-option value="REPTILE">Reptile</mat-option>
+              <mat-option value="FISH">Fish</mat-option>
+              <mat-option value="OTHER">Other</mat-option>
+            </mat-select>
+          </mat-form-field>
         </span>
       </div>
       <div class="item">
@@ -50,7 +67,14 @@
       </div>
       <div class="item" *ngIf="postType === 'LOST'">
         <span>Date last seen:</span>
-        <span><input [(ngModel)]="lostDate" /></span>
+        <span>
+          <mat-form-field style="width: 100%">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="lostDate" style="padding: 0" readonly>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </span>
       </div>
     </div>
   </div>

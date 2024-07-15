@@ -13,22 +13,25 @@ export class PostService {
 
   publishPost(title: string, sex: string, species: string, postType: string, content: string, email: string, imageURL: string, address: string, lostDate: string): Observable<any> {
     const headers = new HttpHeaders({
-
       'accept': '*/*',
       'Content-Type': 'application/json'
-      
     });
-    const body = {
+    const body: any = {
       title,
       sex,
       species,
       postType,
       content,
       email,
-      imageURL,
-      address,
-      lostDate,
+      imageURL
     };
+
+    if (address) {
+      body.address = address
+    }
+    if (lostDate) {
+      body.lostDate = lostDate
+    }
 
     return this.http.post<any>(this.apiUrl, body, { headers, withCredentials: true })
       .pipe(
@@ -61,17 +64,22 @@ export class PostService {
       'accept': '*/*',
       'Content-Type': 'application/json'
     });
-    const body = {
+    const body: any = {
       title,
       sex,
       species,
       postType,
       content,
       email,
-      imageURL,
-      address,
-      lostDate,
+      imageURL
     };
+
+    if (address) {
+      body.address = address
+    }
+    if (lostDate) {
+      body.lostDate = lostDate
+    }
 
     return this.http.put<any>(this.apiUrl + '/' + id, body, { headers, withCredentials: true })
       .pipe(
