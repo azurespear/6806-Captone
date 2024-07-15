@@ -1,13 +1,46 @@
+<div class="background">
 <div class="header">
-  <h2>Petropolis</h2>
-  <div fxLayout="row" fxLayout.xs="row" fxLayoutGap="20px" fxLayoutAlign="space-evenly center">
-    <button mat-flat-button color="primary" (click)="onProfileButtonClick()">User Profile</button>
-    <button mat-flat-button color="primary" (click)="onLogoutButtonClick()">Log out</button>
+  <img src="assets/Petropolis.svg" alt="Petropolis Logo" class="logo">
+  <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-evenly center">
+    <button mat-flat-button color="primary" (click)="onProfileButtonClick()" class="header-button">User Profile</button>
   </div>
 </div>
-  
-<div class="navigation" fxLayout="row" fxLayout.xs="row" fxLayoutAlign="space-evenly center" style="height: 50vh;">
-    <button mat-flat-button color="primary" (click)="onMapButtonClick()">Map</button>
-    <button mat-flat-button color="primary" (click)="onForumButtonClick()">Forum</button>
-    <button mat-flat-button color="primary" (click)="onAIButtonClick()">AI Helper</button>
+
+<div fxLayout="column" fxLayoutAlign="center center" class="main-content">
+  <h2>Explore in Petropolis</h2>
+  <p>
+    Quickly find information about nearby parks, pet hospitals, and pet supply stores, find lost pet, exchange information or chat with our pet-specialized AI helper.
+  </p>
+</div>  
+
+<div fxLayout="row" fxLayoutAlign="space-around start" class="section">
+  <div fxLayout="column" fxLayoutAlign="start center" class="map-area">
+    <h3>Map Area</h3>
+    <button mat-flat-button color="primary" class="uniform-width-button" (click)="onMapButtonClick()">Map</button>
+    <div class="left-aligned-text">
+      <p>• Pet Stores</p>
+      <p>• Pet Hospitals</p>
+      <p>• Pet Parks</p>
+    </div>
+  </div>
+
+  <div fxLayout="column" fxLayoutAlign="start center" class="lost-pet-community">
+    <h3>Lost & Found</h3>
+    <button mat-flat-button color="primary" class="uniform-width-button" (click)="onForumButtonClick()">Forum</button>
+    <div class="left-aligned-text" >
+      <p>• Post Pet Information</p>
+      <p>• Post Adoption</p>
+      <p>• Find Lost Pets</p>
+    </div>
+  </div>
+
+  <div fxLayout="column" fxLayoutAlign="start center" class="help-section">
+    <h3>Need Help?</h3>
+    <button mat-flat-button color="primary" class="uniform-width-button" (click)="onAIButtonClick()">AI Helper</button>
+    <div class="left-aligned-text">
+      <p>• Communicate With AI</p>
+      <p>• Get Professional Advice</p>
+    </div>
+  </div>
+</div>
 </div>

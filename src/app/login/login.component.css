@@ -1,4 +1,30 @@
+.background {
+  background-image: url('/assets/dog.jpg'); /* Replace with your image path */
+  background-size: cover; /* Ensures the image covers the entire container */
+  background-position: top;
+  background-repeat: no-repeat;
+  height: 100%; /* Ensures the div takes full height of the viewport */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
 }
+
+.uniform-width-button {
+  width: 300px; 
+  text-align: center; 
+}
+
+@media only screen and (max-width: 600px) {
+    button {
+      font-size: 14px;
+      line-height: 1.2;
+    }
+  }
+  

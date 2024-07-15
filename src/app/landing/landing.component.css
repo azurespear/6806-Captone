@@ -1,6 +1,46 @@
+.background {
+  position: relative;
+  height: 100vh; 
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; 
+  z-index: 1; 
+}
+
+.background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/assets/dog.jpg'); 
+  background-size: cover; 
+  background-position: top;
+  background-repeat: no-repeat;
+  opacity: 0.75; 
+  z-index: -1; 
+}
+
 .header {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  width: 100%; 
+  position: relative; 
+  z-index: 2; 
+  top: 0;
+}
+
+.logo {
+width: 200px;
+height: auto;
+margin-top: 10px;
+}
+
+.header-button {
+  margin-top: 10px;
 }
 
 .navigation {
@@ -13,3 +53,69 @@
 .navigation button {
     flex: 1;
   }
+  
+.main-content {
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: 50px;
+  margin-top: 100px;
+}
+
+.section {
+  background-color: rgba(247, 206, 147, 0.5); 
+  width: 100%;
+  margin-bottom: 40px;
+  margin-top: 100px;
+}
+
+.map-area, .lost-pet-community, .help-section {
+  width: 20%;
+  text-align: center;
+}
+
+p {
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.uniform-width-button {
+  width: 200px; 
+  text-align: center; 
+}
+
+.left-aligned-text {
+  text-align: left;
+}
+
+@media only screen and (max-width: 600px) {
+  .section {
+    width: 100%;
+    margin-bottom: 40px;
+    margin-top: 50px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+  
+  h3 {
+    font-size: 20px;
+    line-height: 1.5;
+  }
+  
+  p {
+    width: 80%;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+
+  button {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  .uniform-width-button {
+    width: 50px; 
+    text-align: center; 
+  }
+}

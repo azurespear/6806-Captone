@@ -1,6 +1,5 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 declare global {
@@ -25,8 +24,9 @@ export class MapComponent implements OnInit {
   markers: google.maps.Marker[] = [];
   polygons: google.maps.Polygon[] = [];
   autocomplete!: google.maps.places.Autocomplete;
+  searchRadius = 10000; 
 
-  constructor(private authService: AuthService, 
+  constructor(
     private router: Router, 
     private http: HttpClient, 
     private ngZone: NgZone) {}
@@ -62,7 +62,6 @@ export class MapComponent implements OnInit {
     this.map = new google.maps.Map(document.getElementById('map') as HTMLElement, mapOptions);
     this.service = new google.maps.places.PlacesService(this.map);
 
-    // Add listener for POI clicks
     this.map.addListener('click', (event: any) => {
       if (event.placeId) {
         event.stop();
@@ -70,6 +69,16 @@ export class MapComponent implements OnInit {
       }
     });
 
+    this.map.addListener('zoom_changed', () => {
+      this.searchRadius = this.calculateRadius(this.map.getZoom());
+    });
+  }
+
+  calculateRadius(zoom: number | undefined): number {
+    if (zoom === undefined) {
+      zoom = this.zoom;
+    }
+    return Math.round(20000 / Math.pow(2, zoom - 11));
   }
 
   addMarker(location: google.maps.LatLng | google.maps.LatLngLiteral, place?: google.maps.places.PlaceResult) {
@@ -107,8 +116,8 @@ export class MapComponent implements OnInit {
   searchNearby(type: string) {
     const request: google.maps.places.PlaceSearchRequest = {
       location: this.map.getCenter() as google.maps.LatLng,
-      radius: 20000, // 20 km radius
-      type: type // Correct type specification as a string
+      radius: this.searchRadius, 
+      type: type 
     };
 
     this.service.nearbySearch(request, (results, status) => {
@@ -196,21 +205,20 @@ export class MapComponent implements OnInit {
   storeButtonClick(){
     this.searchNearby('pet_store');
     this.clearPolygons();
+    console.log(this.searchRadius);
   }
 
   hospitalButtonClick(){
     this.searchNearby('veterinary_care');
     this.clearPolygons();
+    console.log(this.searchRadius);
   }
 
   parkButtonClick(){
     this.searchNearby('park');
     this.clearPolygons();
     this.addPolygons();
+    console.log(this.searchRadius);
   }
 
-  onLogoutButtonClick() {
-    this.authService.logout();
-    this.router.navigate(['']);
-  }
 }

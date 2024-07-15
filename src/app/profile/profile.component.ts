@@ -19,10 +19,12 @@ export class ProfileComponent implements OnInit {
 
   userData: any;
 
-  constructor(private userService: UserService,
+  constructor(
+    private userService: UserService,
     private authService: AuthService,
     private dialog: MatDialog,
-    private router: Router) { }
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.loadUserData();
@@ -43,7 +45,12 @@ export class ProfileComponent implements OnInit {
 
   confirmEdit(content: string): void {
     if (this.password != this.repeatPassword){
-      this.openErrorDialog('Passwords do not match.');
+      this.openErrorDialog('Passwords do not match');
+      return;
+    }
+
+    if (this.password == ''){
+      this.openErrorDialog('Need password');
       return;
     }
 
@@ -67,6 +74,11 @@ export class ProfileComponent implements OnInit {
     );
   }
   
+  cancelEdit(content: string): void {
+    this.showContent = content;
+    this.loadUserData();
+  }
+
   openErrorDialog(message: string): void {
     this.dialog.open(ErrorDialogComponent, {
       data: { message }
