@@ -1,57 +1,80 @@
 <div class="header">
   <img src="assets/Petropolis.svg" alt="Petropolis Logo" class="logo">
     <div>
-      <button mat-flat-button color="primary" style="margin-right: 20px" class="header-button">Publish</button>
-      <button mat-flat-button color="primary" routerLink="/forum" class="header-button">Back</button>
+      <button mat-flat-button color="primary" style="margin-right: 20px" (click)="publish()">Publish</button>
+      <button mat-flat-button color="primary" routerLink="/forum">Back</button>
     </div>
   </div>
-  
-  
+
+
   <div class="content">
     <div class="left">
-      <div *ngIf="!uploadImage" class="upload-picture" (click)="file.click()">
+      <div *ngIf="!imageURL" class="upload-picture" (click)="file.click()">
         <span>+upload picture</span>
       </div>
-      <img *ngIf="uploadImage" [src]="uploadImage" alt="image" style="width: 100%;" />
+      <img *ngIf="imageURL" [src]="imageURL" alt="image" style="width: 100%;" (click)="file.click()" />
       <input type="file" style="display: none" #file (change)="imageChange($event)" />
     </div>
     <div class="right">
       <div class="item">
         <span>Name:</span>
         <span>
-          <input />
+          <input [(ngModel)]="title" />
         </span>
       </div>
       <div class="item">
         <span>Sex:</span>
         <span>
-          <input />
+          <mat-form-field style="width: 100%">
+            <mat-label>Sex</mat-label>
+            <mat-select [(ngModel)]="sex">
+              <mat-option value="MALE">Male</mat-option>
+              <mat-option value="FEMALE">Female</mat-option>
+            </mat-select>
+          </mat-form-field>
         </span>
       </div>
       <div class="item">
         <span>Species:</span>
         <span>
-          <input />
+          <mat-form-field style="width: 100%">
+            <mat-label>Species</mat-label>
+            <mat-select [(ngModel)]="species">
+              <mat-option value="DOG">Dog</mat-option>
+              <mat-option value="CAT">Cat</mat-option>
+              <mat-option value="BIRD">Bird</mat-option>
+              <mat-option value="RODENT">Rodent</mat-option>
+              <mat-option value="REPTILE">Reptile</mat-option>
+              <mat-option value="FISH">Fish</mat-option>
+              <mat-option value="OTHER">Other</mat-option>
+            </mat-select>
+          </mat-form-field>
         </span>
       </div>
       <div class="item">
         <span>Description:</span>
         <span>
-          <textarea rows="5"></textarea>
+          <textarea rows="5" [(ngModel)]="content"></textarea>
         </span>
       </div>
       <div class="item">
         <span>Contact Email:</span>
-        <span><input /></span>
+        <span><input [(ngModel)]="email" /></span>
       </div>
-      <div class="item">
+      <div class="item" *ngIf="postType === 'LOST'">
         <span>Area last seen:</span>
-        <span><input /></span>
+        <span><input [(ngModel)]="address" /></span>
       </div>
-      <div class="item">
+      <div class="item" *ngIf="postType === 'LOST'">
         <span>Date last seen:</span>
-        <span><input /></span>
+        <span>
+          <mat-form-field style="width: 100%">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="lostDate" style="padding: 0" readonly>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </span>
       </div>
     </div>
   </div>
-  

@@ -2,59 +2,59 @@
   <img src="assets/Petropolis.svg" alt="Petropolis Logo" class="logo">
     <button mat-flat-button color="primary" routerLink="/forum" class="header-button">Back</button>
   </div>
-  
-  
-  <div class="content">
+
+
+  <div class="content" *ngIf="data">
     <div class="left">
       <div>
-        <img style="width: 100%" src="data:image/webp;base64,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" />
-        <div>Lost</div>
+        <img style="width: 100%" [src]="data.imageURL || 'data:image/webp;base64,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'" />
+        <div>{{data.postType}}</div>
       </div>
     </div>
     <div class="right">
       <div class="item">
         <span>Name:</span>
-        <span>Butter</span>
+        <span>{{data.title}}</span>
       </div>
       <div class="item">
         <span>Sex:</span>
-        <span>Butter</span>
+        <span>{{data.sex}}</span>
       </div>
       <div class="item">
         <span>Species:</span>
-        <span>Dog</span>
+        <span>{{data.species}}</span>
       </div>
       <div class="item">
         <span>Description:</span>
-        <span>fsedfkjewfkjwekfwehfnvwehfohwehwejbfwoerhewhfkweffsedfkjewfkjwekfwehfnvwehfohwehwejbfwoerhewhfkweffsedfkjewfkjwekfwehfnvwehfohwehwejbfwoerhewhfkwef</span>
+        <span>{{data.content}}</span>
       </div>
       <div class="item">
         <span>Contact Email:</span>
-        <span>abc123&#64;gmail.com</span>
+        <span>{{data.email}}</span>
       </div>
-      <div class="item">
+      <div class="item" *ngIf="data.postType === 'LOST'">
         <span>Area last seen:</span>
-        <span>bby BC V6H 9E3</span>
+        <span>{{data.address}}</span>
       </div>
-      <div class="item">
+      <div class="item" *ngIf="data.postType === 'LOST'">
         <span>Date last seen:</span>
-        <span>1-jun-2023</span>
+        <span>{{data.lostDate}}</span>
       </div>
     </div>
   </div>
-  
+
   <div class="comments">
     <div class="comment" *ngFor="let comment of comments">
-      <div class="author">{{comment.author}}</div>
-      <div>{{comment.date | date: 'YYYY-MM-d'}}</div>
-      <div>{{comment.description}}</div>
+      <div class="author">{{comment.user.userName}}</div>
+      <div>{{comment.createTime | date: 'YYYY-MM-d'}}</div>
+      <div>{{comment.content}}</div>
     </div>
-  
+
     <div>
       <mat-form-field appearance="outline" style="width: 100%">
         <mat-label>Comments...</mat-label>
-        <textarea matInput rows="5"></textarea>
+        <textarea matInput rows="5" [(ngModel)]="content"></textarea>
       </mat-form-field>
-      <button mat-flat-button color="primary">Submit</button>
+      <button mat-flat-button color="primary" (click)="submitComment()">Submit</button>
     </div>
   </div>

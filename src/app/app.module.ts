@@ -29,6 +29,9 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MyPostComponent } from './my-post/my-post.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 import { StompService, StompConfig } from '@stomp/ng2-stompjs';
 
 // Service
@@ -64,7 +67,10 @@ import { StorageService } from './services/storage.service';
     FlexLayoutModule,
     MatCardModule,
     GoogleMapsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
   providers: [
     provideClientHydration(),
