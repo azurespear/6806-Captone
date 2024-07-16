@@ -32,11 +32,11 @@
         <span>Contact Email:</span>
         <span>{{data.email}}</span>
       </div>
-      <div class="item">
+      <div class="item" *ngIf="data.postType === 'LOST'">
         <span>Area last seen:</span>
         <span>{{data.address}}</span>
       </div>
-      <div class="item">
+      <div class="item" *ngIf="data.postType === 'LOST'">
         <span>Date last seen:</span>
         <span>{{data.lostDate}}</span>
       </div>
