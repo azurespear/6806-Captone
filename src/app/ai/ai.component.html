@@ -12,18 +12,18 @@
   <div class="message-box">
     <div *ngFor="let message of messages" class="message-wrapper" [ngClass]="{'answer': message.isAnswer, 'query': !message.isAnswer}">
       <div class="message" [ngClass]="{'answer': message.isAnswer, 'query': !message.isAnswer}">
-        {{ message.content }}
+        <markdown [data]="message.content"></markdown>
       </div>
     </div>
   </div>
   <div class="default-questions">
-    <button *ngFor="let question of defaultQuestions" class="question-button" (click)="sendDefaultQuestion(question)">
+    <button *ngFor="let question of defaultQuestions" class="question-button" (click)="sendDefaultQuestion(question)" [disabled]="isSendDisabled">
       {{ question }}
     </button>
   </div>
   <div class="input-container">
-    <input type="text" [(ngModel)]="newMessage" placeholder="Enter your message here (Pet-related questions only)" />
-    <button class="send-button" (click)="sendMessage()">Send</button>
+    <input type="text" [(ngModel)]="newMessage" placeholder="Enter your message here (You can only ask questions about pet information or how to choose a pet)" (keyup.enter)="sendMessage()" [disabled]="isSendDisabled"/>
+    <button class="send-button" (click)="sendMessage()" [disabled]="isSendDisabled">Send</button>
   </div>
 </div>
 

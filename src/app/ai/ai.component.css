@@ -8,7 +8,7 @@
   height: auto;
   margin-top: 10px;
   }
-  
+
 .header-button {
   margin-top: 10px;
 }
@@ -19,6 +19,7 @@
   height: 80vh;
   width: 100%;
   margin-top: 40px;
+  background-color: #e8f0f2;
 }
 
 .header {
@@ -42,6 +43,8 @@
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 20px;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
 }
 
 .divider {
@@ -79,14 +82,19 @@
 }
 
 .message.answer {
-  background-color: #f1f1f1;
+  background-color: #e0e0e0;
   border-radius: 10px 10px 10px 0;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
 }
 
 .message.query {
-  background-color: white;
+  background-color: black;
   border-radius: 10px 10px 0 10px;
   border: 1px solid #ccc;
+  color: white;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
 }
 
 .default-questions {
@@ -104,6 +112,8 @@
   margin: 0 10px;
   border-radius: 5px;
   transition: background-color 0.3s;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
 }
 
 .question-button:hover {
@@ -122,6 +132,8 @@ input[type="text"] {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
 }
 
 .send-button {
@@ -132,4 +144,36 @@ input[type="text"] {
   cursor: pointer;
   border-radius: 5px;
   margin-left: 10px;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+}
+
+.send-button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+::ng-deep .message-box .message markdown h1 {
+  font-size: 1.5em !important;
+}
+
+::ng-deep .message-box .message markdown h2 {
+  font-size: 1.25em !important;
+}
+
+::ng-deep .message-box .message markdown h3 {
+  font-size: 1.1em !important;
+  font-weight: bold !important;
+}
+
+::ng-deep .message-box .message markdown h4 {
+  font-size: 1em !important;
+}
+
+::ng-deep .message-box .message markdown h5 {
+  font-size: 0.875em !important;
+}
+
+::ng-deep .message-box .message markdown h6 {
+  font-size: 0.75em !important;
 }
