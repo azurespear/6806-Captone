@@ -1,92 +1,74 @@
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { BehaviorSubject, Observable, Observer } from 'rxjs';
-import { share, filter } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { filter, share } from 'rxjs/operators';
+import { Client, IFrame, IMessage } from '@stomp/stompjs';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class WebSocketService {
-  private socket: any;
+  private webSocketURL: string = 'wss://57.152.32.19:8443/app/chat-websocket';
+  private subscribeRoute: string = '/topic/chat';
+  private client: Client | null = null;
   private messages: BehaviorSubject<string> = new BehaviorSubject('');
+  private reconnectAttempts: number = 0;
+  private maxReconnectAttempts: number = 5;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
+      // console.log('Client');
       this.connectClient();
-    } else {
-      this.connectServer();
     }
   }
 
   private connectClient() {
-    this.socket = new WebSocket('wss://localhost:8443/app/chat-websocket');
+    this.client = new Client({
+      brokerURL: this.webSocketURL,
+      reconnectDelay: 5000,
+      // debug: (str) => {
+      //   console.log(new Date(), str);
+      // },
+    });
 
-    this.socket.onopen = () => {
-      console.log('WebSocket connection opened');
+    this.client.onConnect = (frame: IFrame) => {
+      // console.log('Connected: ' + frame);
+      this.reconnectAttempts = 0; // 重置重连次数
+      this.client!.subscribe(this.subscribeRoute, (message: IMessage) => {
+        const data = JSON.parse(message.body);
+        // console.log(data);
+        this.messages.next(data.body.content);
+      });
     };
 
-    this.socket.onmessage = (event: MessageEvent) => {
-      const data = JSON.parse(event.data);
-      if (data.topic === '/topic/chat') {
-        this.messages.next(data.message);
-      }
-    };
-
-    this.socket.onclose = () => {
-      console.log('WebSocket connection closed');
+    this.client.onStompError = (frame: IFrame) => {
+      console.error('Broker reported error: ' + frame.headers['message']);
+      console.error('Additional details: ' + frame.body);
       this.messages.next('The session has been closed, please click the refresh button to start a new session.');
     };
 
-    this.socket.onerror = (error: Event) => {
-      console.error('WebSocket error:', error);
-    };
-  }
-
-  private connectServer() {
-    const WebSocket = require('ws');
-
-    //just for local test
-    const https = require('https');
-
-    const agent = new https.Agent({
-      rejectUnauthorized: false
-    });
-
-    const options = {
-      agent: agent
-    };
-
-    this.socket = new WebSocket('wss://localhost:8443/app/chat-websocket', options);
-    // this.socket = new WebSocket('wss://localhost:8443/app/chat-websocket');
-
-    this.socket.on('open', () => {
-      console.log('Server-side WebSocket connection opened');
-    });
-
-    this.socket.on('message', (data: string) => {
-      const message = JSON.parse(data);
-      if (message.topic === '/topic/chat') {
-        this.messages.next(message.message);
+    this.client.onWebSocketClose = () => {
+      this.reconnectAttempts++;
+      if (this.reconnectAttempts > this.maxReconnectAttempts) {
+        console.error(`Max reconnect attempts of ${this.maxReconnectAttempts} exceeded.`);
+        this.messages.next('The session has been closed due to excessive reconnect attempts, please click the refresh button to start a new session.');
+        this.client?.deactivate();
+      } else {
+        console.log(`Reconnect attempt #${this.reconnectAttempts}`);
       }
-    });
+    };
 
-
-    this.socket.on('close', () => {
-      console.log('Server-side WebSocket connection closed');
-      this.messages.next('The session has been closed, please click the refresh button to start a new session.');
-    });
-
-    this.socket.on('error', (error: Error) => {
-      console.error('Server-side WebSocket error:', error);
-    });
+    this.client.activate();
   }
 
-  sendMessage(message: string) {
-    if (this.socket && this.socket.readyState === WebSocket.OPEN) {
-      this.socket.send(JSON.stringify({
-        destination: '/app/chat',
-        message: message
-      }));
+  sendMessage(message: any) {
+    if (this.client && this.client.connected) {
+      // console.log(message.toString());
+      this.client.publish({
+        destination: '/app/chat-websocket',
+        body: JSON.stringify(message)
+      });
     } else {
       this.messages.next('The session has been closed, please click the refresh button to start a new session.');
     }
