@@ -32,7 +32,7 @@ import { MyPostComponent } from './my-post/my-post.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
-import { StompService, StompConfig } from '@stomp/ng2-stompjs';
+import { MarkdownModule } from 'ngx-markdown';
 
 // Service
 import { WebSocketService } from './services/websocket.service';
@@ -70,7 +70,8 @@ import { StorageService } from './services/storage.service';
     HttpClientModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    MarkdownModule.forRoot()
   ],
   providers: [
     provideClientHydration(),
