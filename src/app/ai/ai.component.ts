@@ -3,6 +3,8 @@ import { WebSocketService } from '../services/websocket.service';
 import { StorageService } from '../services/storage.service';
 import { v4 as uuidv4 } from 'uuid';
 import { isPlatformBrowser } from '@angular/common';
+import {UserService} from "../services/user.service";
+
 
 @Component({
   selector: 'app-ai',
@@ -24,16 +26,28 @@ export class AiComponent implements OnInit {
     'What should I do if my pet is sick?'
   ];
   isSendDisabled: boolean = false;
+  userId: number = -1;
 
   constructor(
     private webSocketService: WebSocketService,
     private storageService: StorageService,
+    private userService: UserService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit(): void {
+    this.userService.getUserData().subscribe(
+      data => {
+        this.userId = data.id;
+      },
+      error => {
+        console.error('Error fetching user data', error);
+      }
+    );
+
     if (isPlatformBrowser(this.platformId)) {
-      const cachedMessages = this.storageService.getItem('messages');
+      // @ts-ignore
+      const cachedMessages = this.storageService.getItem('messages'.concat(this.userId.toString()));
       // console.log(this.messages.toString())
       if (cachedMessages) {
         this.messages = JSON.parse(cachedMessages);
@@ -61,7 +75,7 @@ export class AiComponent implements OnInit {
         //   console.log(this.decodeBuffer(msg.content));
         // });
         if (isPlatformBrowser(this.platformId)) {
-          this.storageService.setItem('messages', JSON.stringify(this.messages));
+          this.storageService.setItem('messages'.concat(this.userId.toString()), JSON.stringify(this.messages));
         }
         this.checkMessages();
     });
@@ -92,7 +106,7 @@ export class AiComponent implements OnInit {
     this.messages = [];
     this.isSendDisabled = false;
     if (isPlatformBrowser(this.platformId)) {
-      this.storageService.removeItem('messages');
+      this.storageService.removeItem('messages'.concat(this.userId.toString()));
     }
   }
 
