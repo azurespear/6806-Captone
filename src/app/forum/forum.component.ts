@@ -38,7 +38,7 @@ export class ForumComponent implements OnInit {
       posts = posts.filter((item: any) => item.title && item.title.toLowerCase().includes(this.name.toLowerCase()))
     }
     if (this.sex) {
-      posts = posts.filter((item: any) => item.sex && item.sex.toLowerCase().includes(this.sex.toLowerCase()))
+      posts = posts.filter((item: any) => item.sex && item.sex.toLowerCase()===(this.sex.toLowerCase()))
     }
     if (this.species) {
       posts = posts.filter((item: any) => item.species && item.species.toLowerCase().includes(this.species.toLowerCase()))
