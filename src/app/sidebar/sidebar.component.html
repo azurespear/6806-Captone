@@ -3,7 +3,7 @@
   <p *ngIf="location">
     {{ location.address }}<br>
     Rating: {{ location.rating }}<br>
-    <a *ngIf="location.website" [href]="location.website" target="_blank">Website</a>
+    <a *ngIf="location.website" [href]="location.website" target={{ location.website }}>Website</a>
   </p>
   <div *ngIf="location && location.photos.length > 0">
     <img *ngFor="let photo of location.photos" [src]="photo.getUrl()" style="max-width: 100%; height: auto; margin-top: 10px;">

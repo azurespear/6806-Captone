@@ -98,7 +98,7 @@ export class MapComponent implements OnInit {
               lng: location.lng || 0
             },
             rating: place.rating || 'No rating available',
-            website: place.website || 'No website available',
+            website: place.website || null,
             photos: place.photos || []
           };
         });
@@ -151,7 +151,7 @@ export class MapComponent implements OnInit {
               lng: lng ?? 0
             },
             rating: place.rating || 'No rating available',
-            website: place.website || 'No website available',
+            website: place.website || null,
             photos: place.photos || []
           };
         });
